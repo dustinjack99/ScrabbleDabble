@@ -1,0 +1,6 @@
+.tile {
+    background-image: url("./assets/images/tile-background.jpeg");
+    border-color: black;
+    height: 100px;
+    width: 100px;
+}
