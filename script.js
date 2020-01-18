@@ -24,6 +24,7 @@ function submitWord (submit) {
     let word = input.value;
     word = word.toUpperCase();
     console.log(word);
+
     input.value = '';
    
     // for (var i = 0; i < word.length; ++i) {
@@ -31,3 +32,17 @@ function submitWord (submit) {
     // }
     
 }
+
+// update the tabl with word, scoree, and bonus 
+
+    // update the score in the upper total 
+
+    // update the tile count 
+
+    // remove used tiles from the div 
+
+    // add new tiles to the tiles div 
+
+    // add some bonus functionality 
+
+    // check for spelling 
