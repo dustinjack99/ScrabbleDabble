@@ -53,6 +53,8 @@ function submitWord (submit) {
     
 }
 
+    // add click event functionality to allow users to click on the letters (will be helpful for mobile)
+
 // update the tabl with word, scoree, and bonus 
 
     // update the score in the upper total 
@@ -66,5 +68,7 @@ function submitWord (submit) {
     // add some bonus functionality 
 
     // check for spelling 
+        // loop thru the returned JSON array - if we don't find the exact word match, return a neg score and error 
+
 
     
