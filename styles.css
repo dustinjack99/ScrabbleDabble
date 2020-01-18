@@ -13,7 +13,7 @@ header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 h1 {
-    font-size: 2.6em;
+    font-size: 2.1em;
     font-weight: lighter;
     margin: 20px auto 30px;
     text-align: center;
@@ -22,6 +22,7 @@ h1 {
 header div {
     display: flex;
     flex-direction: row;
+    font-size: 0.8em;
     justify-content: space-around;
     margin: 10px auto;
     width: 80%;
@@ -49,32 +50,37 @@ header div {
     box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: row;
-    height: 60px;
+    height: 40px;
     text-align: center;
     margin: 5px;
-    width: 60px;
+    width: 40px;
 }
 .letter {
-    font-size: 2em;
+    font-size: 1.4em;
     width: 80%;
-    padding: 12px 0 0 12px;
+    padding: 8px 0 0 12px;
 }
 .letter-value {
-    font-size: 0.9em;
-    padding: 40px 5px 0 0;
+    font-size: 0.6em;
+    padding: 28px 4px 0 0;
 }
 
 /* --- Form Styles --- */
 
 form {
+    font-size: 0.8em;
     margin: 10px auto;
     text-align: center;
-    width: 90%;
+    width: 60%;
+}
+input {
+    margin: auto;
 }
 button {
     background: radial-gradient(rgb(76, 154, 223), rgb(2,117,216));
     border-radius: 5px;
-    margin-left: 5px;
+    margin: auto;
+    width: 50%;
 }
 
 /* --- Word Bank Styles --- */
@@ -102,8 +108,25 @@ table,
     #tiles {
         width: 80%;
     }
-    form {
+    .tile {
+        height: 60px;
+        width: 60px;
+    }
+    .letter {
+        font-size: 2em;
         width: 80%;
+        padding: 12px 0 0 12px;
+    }
+    .letter-value {
+        font-size: 0.9em;
+        padding: 40px 5px 0 0;
+    }
+    form {
+        font-size: 1em;
+        width: 80%;
+    }
+    button {
+        width: 25%;
     }
     #word-bank {
         width: 80%;
@@ -127,6 +150,9 @@ table,
     .letter-value {
         font-size: 1.1em;
         padding: 46px 5px 0 0;
+    }
+    button {
+        width: 30%;
     }
     #word-bank {
         width: 60%;
