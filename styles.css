@@ -9,6 +9,7 @@
 header {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 h1 {
     font-size: 3em;
     font-weight: lighter;
@@ -16,6 +17,7 @@ h1 {
     text-align: center;
     width: 80%;
 }
+
 header div {
     display: flex;
     flex-direction: row;
@@ -54,6 +56,8 @@ header div {
     header div p {
         padding: 5px;
     }
+
+}
   
 .tile {
     background-image: url("./assets/images/tile-background.jpeg");
