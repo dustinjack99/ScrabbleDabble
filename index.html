@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Scrabble Dabble</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' href='styles.css'>
-    
- 
+
 </head>
 
 <body>
@@ -25,57 +23,69 @@
     </header>
 
     <main>
-        <div>
-            <div>
+        <div id='game-container'>
+            <div id='tiles-form-container'>
                 <div id='tiles'>
-                    <div class='tile'>A</div>
-                    <div class='tile'>B</div>
-                    <div class='tile'>C</div>
-                    <div class='tile'>D</div>
-                    <div class='tile'>E</div>
-                    <div class='tile'>F</div>
-                    <div class='tile'>G</div>
+                    <div class='tile'>
+                        <p class='letter'>A</p>
+                        <p class='letter-value'>1</p>
+                    </div>
+                    <div class='tile'>
+                        <p class='letter'>B</p>
+                        <p class='letter-value'>1</p>
+                    </div>    
+                    <div class='tile'>
+                        <p class='letter'>C</p>
+                        <p class='letter-value'>1</p>
+                    </div>    
+                    <div class='tile'>
+                        <p class='letter'>D</p>
+                        <p class='letter-value'>1</p>
+                    </div>    
+                    <div class='tile'>
+                        <p class='letter'>E</p>
+                        <p class='letter-value'>1</p>
+                    </div>    
+                    <div class='tile'>
+                        <p class='letter'>F</p>
+                        <p class='letter-value'>1</p>
+                    </div>    
+                    <div class='tile'>
+                        <p class='letter'>G</p>
+                        <p class='letter-value'>10</p>
+                    </div>
                 </div>
                 <form class="pure-form">
                     <input type="text" id="input" class="pure-input-rounded">
                     <button type="submit" id="submit" class="pure-button pure-button-primary">Submit Word!</button>
                 </form>
             </div>
-            <div>
-                <h3>Word Bank</h3>
-                <div id='word-bank'>
-                    <table class='pure-table'>
-                        <thead>
-                            <tr>
-                                <th>Word</th>
-                                <th>Score</th>
-                                <th>Bonus!</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>tree</td>
-                                <td>5</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>school</td>
-                                <td>7</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
 
-                    </table>
-                </div>
+            <div id='word-bank'>
+                <h3>Word Bank</h3>
+                <table class='pure-table'>
+                    <thead>
+                        <tr>
+                            <th>Word</th>
+                            <th>Score</th>
+                            <th>Bonus!</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>tree</td>
+                            <td>5</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>school</td>
+                            <td>7</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <form>
-                <input type='text'>
-                <button type='submit'></button>
-            </form>
-        </div>
-        <div>
-            <h3>Word Bank</h3>
-            <div id='word-bank'></div>
+
         </div>
     </main>
 
