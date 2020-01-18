@@ -29,18 +29,10 @@ function submitWord (submit) {
             return response.json();
         }).then(function(json) {
             console.log(json)
-            
-            if (json[0].shortdef === 'null') {
-                console.log('this is not a word');
-            }
-
         
-        
-        
-        word = word.toUpperCase();
-        console.log(word);
-
-        input.value = '';
+            word = word.toUpperCase();
+            console.log(word);
+            input.value = '';
 
         });
 
@@ -66,5 +58,6 @@ function submitWord (submit) {
     // add some bonus functionality 
 
     // check for spelling 
+
 
     
