@@ -46,3 +46,7 @@ function submitWord (submit) {
     // add some bonus functionality 
 
     // check for spelling 
+
+    let word = "";
+    let apiKey = "055bd940-2f3e-4ceb-aecb-c172dfea4116";
+    let url = `https://www.dictionaryapi.com/api/v3/references/sd2//json/${word}?key=${apiKey}`
