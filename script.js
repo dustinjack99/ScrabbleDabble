@@ -21,17 +21,22 @@ submit.addEventListener("click", submitWord)
 
 function submitWord (submit) {
     submit.preventDefault();
-
+    let word = input.value;
+    let apiKey = "055bd940-2f3e-4ceb-aecb-c172dfea4116";
+    let url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/${word}?key=${apiKey}`;
     fetch(url)
         .then(function(response) {
-            response.json();
-        })
-        .then(function(json) {
-            console.log(json);
-
+            return response.json();
+        }).then(function(json) {
+            console.log(json)
+            
+            if (json[0].shortdef === 'null') {
+                console.log('this is not a word');
+            }
 
         
-        let word = input.value;
+        
+        
         word = word.toUpperCase();
         console.log(word);
 
@@ -39,7 +44,7 @@ function submitWord (submit) {
 
         });
 
-
+       
     
    
     // for (var i = 0; i < word.length; ++i) {
@@ -62,6 +67,4 @@ function submitWord (submit) {
 
     // check for spelling 
 
-    let word = "";
-    let apiKey = "055bd940-2f3e-4ceb-aecb-c172dfea4116";
-    let url = `https://www.dictionaryapi.com/api/v3/references/sd2//json/${word}?key=${apiKey}`
+    
