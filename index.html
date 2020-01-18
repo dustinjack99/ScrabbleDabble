@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,11 @@
     <title>Scrabble Dabble</title>
 
     <link rel='stylesheet' type='text/css' href='styles.css'>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+ 
 </head>
+
 <body>
     <header>
         <h1>Scrabble Dabble</h1>
@@ -24,27 +29,51 @@
         <div>
             <div>
                 <div id='tiles'>
-                    <div class='tile'></div>
-                    <div class='tile'></div>
-                    <div class='tile'></div>
-                    <div class='tile'></div>
-                    <div class='tile'></div>
-                    <div class='tile'></div>
-                    <div class='tile'></div>
+                    <div class='tile'>A</div>
+                    <div class='tile'>B</div>
+                    <div class='tile'>C</div>
+                    <div class='tile'>D</div>
+                    <div class='tile'>E</div>
+                    <div class='tile'>F</div>
+                    <div class='tile'>G</div>
                 </div>
-                <form>
-                    <input id="input" type='text'>
-                    <button id="submit" type='submit'></button>
+                <form class="pure-form">
+                    <input type="text" class="pure-input-rounded">
+                    <button type="submit" class="pure-button pure-button-primary">Submit Word!</button>
                 </form>
             </div>
             <div>
                 <h3>Word Bank</h3>
-                <div id='word-bank'></div>
+                <div id='word-bank'>
+                    <table class='pure-table'>
+                        <thead>
+                            <tr>
+                                <th>Word</th>
+                                <th>Score</th>
+                                <th>Bonus!</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>tree</td>
+                                <td>5</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>school</td>
+                                <td>7</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
         </div>
-    
+
     </main>
-    
+
     <script src='script.js'></script>
 </body>
+
 </html>
