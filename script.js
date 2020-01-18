@@ -21,11 +21,26 @@ submit.addEventListener("click", submitWord)
 
 function submitWord (submit) {
     submit.preventDefault();
-    let word = input.value;
-    word = word.toUpperCase();
-    console.log(word);
 
-    input.value = '';
+    fetch(url)
+        .then(function(response) {
+            response.json();
+        })
+        .then(function(json) {
+            console.log(json);
+
+
+        
+        let word = input.value;
+        word = word.toUpperCase();
+        console.log(word);
+
+        input.value = '';
+
+        });
+
+
+    
    
     // for (var i = 0; i < word.length; ++i) {
     //     sum += scores[word.charAt(i)] || 0;
