@@ -1,3 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*  --- Header Styles --- */
+
+header {
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+    font-size: 3em;
+    font-weight: lighter;
+    margin: 20px auto 30px;
+    text-align: center;
+    width: 80%;
+}
+header div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+}
+
+/* --- Media Queries --- */
+
+@media (min-width: 568px) {
+    header div {
+        width: 70%;
+    }
+}
+@media (min-width: 768px) {
+    header div {
+        width: 60%;
+    }
+}
+@media (min-width: 1024px) {
+    header {
+        display: flex;
+        flex-direction: row;
+    }
+    h1 {
+        margin-left: 2.5em;
+        padding-top: 10px;
+    }
+    header div {
+        display: flex;
+        flex-direction: column;
+        width: 16%;
+    }
+    header div p {
+        padding: 5px;
+    }
+  
 .tile {
     background-image: url("./assets/images/tile-background.jpeg");
     border-color: black;
