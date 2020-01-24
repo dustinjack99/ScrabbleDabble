@@ -72,7 +72,7 @@ function checkIfWord() {
     // let giphyKey = "7kwL3XTkF7VONSgoTjSPV7HpPUgMvkPu";
     let url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/${word}?key=${apiKey}`;
     let gifUrl = `https://api.giphy.com/v1/gifs/search?api_key=7kwL3XTkF7VONSgoTjSPV7HpPUgMvkPu&q=${word}&limit=25&offset=0&rating=G&lang=en`;
-    
+
     fetch(url)
         .then(function (response) {
             return response.json();
@@ -83,11 +83,22 @@ function checkIfWord() {
                 console.log('its a word');
                 submittedWord = word.toUpperCase();
                 input.value = '';
+                fetch(gifUrl)
+                    .then(function (r) {
+                        return r.json();
+                    }).then(function (j) {
+                        let randImg = Math.floor(Math.random() * 25)
+                        let gif = j.data[randImg].images.original.url;
+                        console.log(randImg)
+                        image.setAttribute("src", gif)
+                    });
             } else {
 
                 console.log('this is not a word');
             }
         });
+
+
 }
 
 
@@ -104,33 +115,21 @@ submit.addEventListener("click", function (e) {
 });
 
 
-            word = word.toUpperCase();
-            console.log(word);
+word = word.toUpperCase();
+console.log(word);
 
-            input.value = '';
-
-
-
-
-    fetch(gifUrl)
-        .then(function (r) {
-            return r.json();
-        }).then(function (j) {
-            let randImg = Math.floor(Math.random()*25)
-            let gif = j.data[randImg].images.original.url;
-            console.log(randImg)
-            
-
-        
-            image.setAttribute("src", gif)
-
-        });
+input.value = '';
 
 
 
 
-    
-}
+
+
+
+
+
+
+
 
 
 
