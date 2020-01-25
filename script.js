@@ -33,15 +33,13 @@ count();
 function count() {
     let s = 60;
     setInterval(function () {
-        let m = timer / 60; 
+        let m = timer / 60;
         if (timer > 0) {
             timer--;
             s--;
             time.textContent = "Time: " + `${Math.floor(m)} min, ` + `${s + 1} sec`;
-            console.log(timer)
         } if (s === 0) {
             s = s + 60;
-            console.log(s);
         } if (timer === 0) {
             ///Put the link to 
             //results screen here
@@ -72,9 +70,7 @@ function populateTiles() {
     for (let i = 0; i < letterFace.length; i++) {
         let index = Math.floor(Math.random() * tileBag.length)
         let letter = tileBag[index]
-        console.log(letter);
         tileBag.splice(index, 1);
-        console.log(tileBag.length);
         var leftTiles = tileBag.length;
         letterFace[i].textContent = letter;
         displayedLetters.push(letter);
@@ -86,8 +82,6 @@ function getTileValue() {
         let letter = letterFace[i].textContent
         let score = scores[letter]
         letterValue[i].textContent = score;
-
-
     }
 }
 
@@ -109,7 +103,7 @@ function checkIfWord() {
                 console.log('its a word');
                 submittedWord = word.toUpperCase();
                 input.value = '';
-                
+
                 //fetch for Giphy API
                 fetch(gifUrl)
                     .then(function (r) {
@@ -117,7 +111,7 @@ function checkIfWord() {
                     }).then(function (j) {
                         let randImg = Math.floor(Math.random() * 25)
                         let gif = j.data[randImg].images.original.url;
-                        console.log(randImg);
+                        // console.log(randImg);
                         image.setAttribute("src", gif);
                     });
             } else {
@@ -129,31 +123,27 @@ function checkIfWord() {
 
 }
 
-
-function scoreOfWord () {
+function printWords() {
     let scoreOfWord = 0;
     let userWord = input.value.trim().toUpperCase();
     let userLetters = userWord.split("");
+    let bonusOfWord = 0;
+     var row = table.insertRow(1);
+    var wordCell = row.insertCell(0);
+    var scoreCell = row.insertCell(1);
+    var bonusCell = row.insertCell(2);
     for (let i = 0; i < userLetters.length; i++) {
         let thisLetter = userLetters[i];
         let scoreOfLetter = scores[thisLetter];
         scoreOfWord = scoreOfWord + scoreOfLetter;
     };
     console.log("The score of " + userWord + " is " + scoreOfWord + ". Great Job!");
-    return scoreOfWord;
-};
-
-function printWords () {
-    let word = input.value.trim().toUpperCase();
-    let tr = document.createElement("tr");
-    let tdWord = document.createElement("td");
-    let tdScore = document.createElement("td");
-    let tdBonus = document.createElement("td");
-    table.appendChild(tr);
-    tr.appendChild(tdWord);
-    tr.appendChild(tdScore);
-    tr.appendChild(tdBonus);
-    tdWord.textContent = word;
+    wordCell.innerHTML = userWord;
+    scoreCell.innerHTML = scoreOfWord;
+    bonusCell.innerHTML = bonusOfWord;
+    userScore = userScore + scoreOfWord + bonusOfWord;
+    score.textContent = "Score: " + userScore;
+ 
     ///still need outside scores and bonus variables
 }
 
@@ -169,7 +159,6 @@ submit.addEventListener("click", function (e) {
 
     }
     validWord = true;
-    scoreOfWord();
     printWords();
 });
 
