@@ -10,18 +10,18 @@ let form = document.querySelector(".pure-form");
 let score = document.querySelector("#score");
 let image = document.querySelector("#returnImg");
 let tileButton = document.querySelector('.letter');
-
-let table = document.querySelector(".pure-table");
 let tableBody = document.querySelector("#table-body");
-let userScore = 0;
+let table = document.querySelector(".pure-table");
+let gameBody = document.querySelector("#game-container");
 
+let userScore = 0;
 let displayedLetters = [];
 let validWord = true;
 let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8, 'K': 5, 'L': 1, 'M': 3, 'N': 1, 'O': 1, 'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1, 'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10 };
 let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
-let timer = 120;
+let timer = 240;
 
 
 tileNum.textContent = "Tiles left: " + leftTiles;
@@ -29,6 +29,7 @@ score.textContent = "Score: " + userScore;
 input.value = '';
 
 // *********************** GLOBAL FUNCTIONS ******************************
+
 function count() {
     let s = 60;
     setInterval(function () {
@@ -39,11 +40,31 @@ function count() {
             time.textContent = "Time: " + `${Math.floor(m)} min, ` + `${s + 1} sec`;
         } if (s === 0) {
             s = s + 60;
-        } if (timer === 0) {
-            ///Put the link to 
-            //results screen here
-        }
+        } if (timer === 0 || tileBag.length <= 0) {
+            let h1 = document.createElement("p");
+            let form = document.createElement("form");
+            let name = document.createElement("input");
+            let button = document.createElement("button");
+            gameBody.replaceWith(h1);
+            h1.textContent = "You're Done! Enter your name to submit score.";
+            h1.appendChild(form);
+            form.appendChild(name);
+            form.appendChild(button);
+            button.textContent = "Submit";
+            form.setAttribute("class", "pure-form");
+            button.setAttribute("class", "pure-button pure-button-primary");
+            button.setAttribute("id", "endBtn");
+            name.setAttribute("class", "pure-input-rounded");
 
+            let endBtn = document.querySelector("#endBtn");
+
+            endBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.setItem("score", userScore);
+                window.location.href = "scores.html";
+            });
+        }
+        console.log(timer)
     }, 1000);
 };
 
@@ -124,9 +145,8 @@ function checkIfWord() {
                 console.log('this is not a word');
             }
         });
-
-
 };
+
 
 function printWords() {
     let scoreOfWord = 0;
