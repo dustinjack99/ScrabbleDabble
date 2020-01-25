@@ -67,16 +67,17 @@ function compareLetters() {
 }
 
 function populateTiles() {
-    displayeLetters = [];
+    displayedLetters = [];
     /// this may cause a problem user doesn't use each letter - come back to this 
     for (let i = 0; i < letterFace.length; i++) {
-        let index = Math.floor(Math.random() * tileBag.length)
-        let letter = tileBag[index]
+        let index = Math.floor(Math.random() * tileBag.length);
+        let letter = tileBag[index];
         console.log(letter);
         tileBag.splice(index, 1);
         console.log(tileBag.length);
         var leftTiles = tileBag.length;
         letterFace[i].textContent = letter;
+        tileNum.textContent = "Tiles left: " + leftTiles;
         displayedLetters.push(letter);
     }
 }
@@ -166,11 +167,11 @@ submit.addEventListener("click", function (e) {
     compareLetters();
     if (validWord) {
         checkIfWord();
-
     }
     validWord = true;
     scoreOfWord();
     printWords();
+    populateTiles();
 });
 
 // add click event functionality to allow users to click on the letters (will be helpful for mobile)
