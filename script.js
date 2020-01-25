@@ -9,6 +9,7 @@ let letterFace = document.querySelectorAll(".letter");
 let form = document.querySelector(".pure-form");
 let score = document.querySelector("#score");
 let image = document.querySelector("#returnImg");
+
 let userScore = 0
 let displayedLetters = [];
 let validWord = true;
@@ -17,6 +18,7 @@ let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPP
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
 let timer = 120;
+
 
 tileNum.textContent = "Tiles left: " + leftTiles;
 score.textContent = "Score: " + userScore;
@@ -123,6 +125,19 @@ function checkIfWord() {
 
 }
 
+function scoreOfWord () {
+    let scoreOfWord = 0;
+    let userWord = input.value.trim().toUpperCase();
+    let userLetters = userWord.split("");
+    for (let i = 0; i < userLetters.length; i++) {
+        let thisLetter = userLetters[i];
+        let scoreOfLetter = scores[thisLetter];
+        scoreOfWord = scoreOfWord + scoreOfLetter;
+    };
+    console.log("The score of " + userWord + " is " + scoreOfWord + ". Great Job!");
+    return scoreOfWord;
+};
+
 
 populateTiles();
 getTileValue();
@@ -134,6 +149,7 @@ submit.addEventListener("click", function (e) {
         checkIfWord();
     }
     validWord = true;
+    scoreOfWord();
 });
 
 // add click event functionality to allow users to click on the letters (will be helpful for mobile)
@@ -175,4 +191,4 @@ submit.addEventListener("click", function (e) {
 //     var previousHighScores = JSON.parse(localStorage.getItem('previousHighScores'));
 //     if (previousHighScores == null) previousHighScores = [];
 //     previousHighScores.push(scoreToLog);
-//     localStorage.setItem("previousHighScores", JSON.stringify(previousHighScores));
+//     localStorage.setItem("previousHighScores", JSON.stringify(previousHighScores))
