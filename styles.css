@@ -7,6 +7,57 @@ body {
     background-color: rgb(255, 255, 202);
 }
 
+/* --- Landing Page Styles --- */
+
+#landing-page {
+    background-color: rgb(102, 102, 109);
+    font-family: Arial, Helvetica, sans-serif;
+}
+#landing-page h1 {
+    color: white;
+    font-size: 3em;
+    font-weight: lighter;
+    margin: 30px auto;
+}
+#description-header,
+#description-para {
+    color: white;
+    font-weight: lighter;
+    margin: 15px auto;
+    text-align: center;
+    width: 90%;
+}
+#start-msg-container {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    margin: 20px auto;
+    text-transform: uppercase;
+    width: 450px;
+}
+#start-msg-container div,
+#start-msg-container button {
+    border: 2px solid white;
+    font-size: 1.5em;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    width: 50px;
+}
+#start-msg-container div {
+    background-color: rgb(248, 248, 136);
+    padding-top: 10px;
+}
+#start-msg-container button {
+    background-color: lightpink;
+    cursor: pointer;
+}
+.fa-star {
+    color: black;
+}
+
 /*  --- Header Styles --- */
 
 header {
@@ -78,7 +129,7 @@ form {
 input {
     margin: auto;
 }
-button {
+#submit {
     background: radial-gradient(rgb(76, 154, 223), rgb(2,117,216));
     border-radius: 5px;
     margin: auto;
