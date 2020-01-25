@@ -9,7 +9,11 @@ let letterFace = document.querySelectorAll(".letter");
 let form = document.querySelector(".pure-form");
 let score = document.querySelector("#score");
 let image = document.querySelector("#returnImg");
-let userScore = 0
+
+
+let table = document.querySelector(".pure-table");
+let userScore = 0;
+
 let displayedLetters = [];
 let validWord = true;
 let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8, 'K': 5, 'L': 1, 'M': 3, 'N': 1, 'O': 1, 'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1, 'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10 };
@@ -18,13 +22,14 @@ let tileBag = spl.split("");
 let leftTiles = tileBag.length;
 let timer = 120;
 
+
 tileNum.textContent = "Tiles left: " + leftTiles;
 score.textContent = "Score: " + userScore;
 input.value = '';
 
 count();
 
-//timer countdown
+timer countdown
 function count() {
     let s = 60;
     setInterval(function () {
@@ -33,12 +38,13 @@ function count() {
             timer--;
             s--;
             time.textContent = "Time: " + `${Math.floor(m)} min, ` + `${s + 1} sec`;
-            
+            console.log(timer)
         } if (s === 0) {
             s = s + 60;
             console.log(s);
         } if (timer === 0) {
-            ///Put the link to splash screen here
+            ///Put the link to 
+            //results screen here
         }
 
     }, 1000);
@@ -124,51 +130,82 @@ function checkIfWord() {
 }
 
 
+function scoreOfWord () {
+    let scoreOfWord = 0;
+    let userWord = input.value.trim().toUpperCase();
+    let userLetters = userWord.split("");
+    for (let i = 0; i < userLetters.length; i++) {
+        let thisLetter = userLetters[i];
+        let scoreOfLetter = scores[thisLetter];
+        scoreOfWord = scoreOfWord + scoreOfLetter;
+    };
+    console.log("The score of " + userWord + " is " + scoreOfWord + ". Great Job!");
+    return scoreOfWord;
+};
+
+function printWords () {
+    let word = input.value.trim().toUpperCase();
+    let tr = document.createElement("tr");
+    let tdWord = document.createElement("td");
+    let tdScore = document.createElement("td");
+    let tdBonus = document.createElement("td");
+    table.appendChild(tr);
+    tr.appendChild(tdWord);
+    tr.appendChild(tdScore);
+    tr.appendChild(tdBonus);
+    tdWord.textContent = word;
+    ///still need outside scores and bonus variables
+}
+
+
 populateTiles();
 getTileValue();
 
 submit.addEventListener("click", function (e) {
     e.preventDefault();
+    printWords();
     compareLetters();
     if (validWord) {
         checkIfWord();
+
     }
     validWord = true;
+    scoreOfWord();
 });
 
-// add click event functionality to allow users to click on the letters (will be helpful for mobile)
+add click event functionality to allow users to click on the letters (will be helpful for mobile)
 
-// update the tabl with word, scoree, and bonus 
+update the tabl with word, scoree, and bonus 
 
-// update the score in the upper total 
-
-//
-
-// update the tile count 
-
-// remove used tiles from the div 
-
-// add new tiles to the tiles div 
-
-// add some bonus functionality 
-
-// check for spelling 
-// loop thru the returned JSON array - if we don't find the exact word match, return a neg score and error 
+update the score in the upper total 
 
 
 
+update the tile count 
 
-//     //validate the initials are entered 
-//     if (userName.value === "") {
-//         alert('Please enter your initials, Dabbler');
-//         return;
-//     };
-//     // Log high score into local storage 
+remove used tiles from the div 
 
-//     var scoreToLog = {
-//         'userName': userName.value.trim(),
-//         'userScore': userScore
-//     };
+add new tiles to the tiles div 
+
+add some bonus functionality 
+
+check for spelling 
+loop thru the returned JSON array - if we don't find the exact word match, return a neg score and error 
+
+
+
+
+    //validate the initials are entered 
+    if (userName.value === "") {
+        alert('Please enter your initials, Dabbler');
+        return;
+    };
+    // Log high score into local storage 
+
+    var scoreToLog = {
+        'userName': userName.value.trim(),
+        'userScore': userScore
+    };
 
 //     // add high score to local storage 
 
