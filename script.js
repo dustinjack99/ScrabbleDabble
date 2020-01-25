@@ -29,7 +29,7 @@ input.value = '';
 
 count();
 
-timer countdown
+//timer countdown
 function count() {
     let s = 60;
     setInterval(function () {
@@ -163,7 +163,6 @@ getTileValue();
 
 submit.addEventListener("click", function (e) {
     e.preventDefault();
-    printWords();
     compareLetters();
     if (validWord) {
         checkIfWord();
@@ -171,41 +170,42 @@ submit.addEventListener("click", function (e) {
     }
     validWord = true;
     scoreOfWord();
+    printWords();
 });
 
-add click event functionality to allow users to click on the letters (will be helpful for mobile)
+// add click event functionality to allow users to click on the letters (will be helpful for mobile)
 
-update the tabl with word, scoree, and bonus 
+// update the tabl with word, scoree, and bonus 
 
-update the score in the upper total 
-
-
-
-update the tile count 
-
-remove used tiles from the div 
-
-add new tiles to the tiles div 
-
-add some bonus functionality 
-
-check for spelling 
-loop thru the returned JSON array - if we don't find the exact word match, return a neg score and error 
+// update the score in the upper total 
 
 
 
+// update the tile count 
 
-    //validate the initials are entered 
-    if (userName.value === "") {
-        alert('Please enter your initials, Dabbler');
-        return;
-    };
-    // Log high score into local storage 
+// remove used tiles from the div 
 
-    var scoreToLog = {
-        'userName': userName.value.trim(),
-        'userScore': userScore
-    };
+// add new tiles to the tiles div 
+
+// add some bonus functionality 
+
+// check for spelling 
+// loop thru the returned JSON array - if we don't find the exact word match, return a neg score and error 
+
+
+
+
+//     //validate the initials are entered 
+//     if (userName.value === "") {
+//         alert('Please enter your initials, Dabbler');
+//         return;
+//     };
+//     // Log high score into local storage 
+
+//     var scoreToLog = {
+//         'userName': userName.value.trim(),
+//         'userScore': userScore
+//     };
 
 //     // add high score to local storage 
 
