@@ -9,8 +9,11 @@ let letterFace = document.querySelectorAll(".letter");
 let form = document.querySelector(".pure-form");
 let score = document.querySelector("#score");
 let image = document.querySelector("#returnImg");
+
+
 let table = document.querySelector(".pure-table");
 let userScore = 0;
+
 let displayedLetters = [];
 let validWord = true;
 let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8, 'K': 5, 'L': 1, 'M': 3, 'N': 1, 'O': 1, 'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1, 'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10 };
@@ -18,6 +21,7 @@ let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPP
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
 let timer = 120;
+
 
 tileNum.textContent = "Tiles left: " + leftTiles;
 score.textContent = "Score: " + userScore;
@@ -125,8 +129,22 @@ function checkIfWord() {
 
 }
 
+
+function scoreOfWord () {
+    let scoreOfWord = 0;
+    let userWord = input.value.trim().toUpperCase();
+    let userLetters = userWord.split("");
+    for (let i = 0; i < userLetters.length; i++) {
+        let thisLetter = userLetters[i];
+        let scoreOfLetter = scores[thisLetter];
+        scoreOfWord = scoreOfWord + scoreOfLetter;
+    };
+    console.log("The score of " + userWord + " is " + scoreOfWord + ". Great Job!");
+    return scoreOfWord;
+};
+
 function printWords () {
-    let word = input.value;
+    let word = input.value.trim().toUpperCase();
     let tr = document.createElement("tr");
     let tdWord = document.createElement("td");
     let tdScore = document.createElement("td");
@@ -138,6 +156,7 @@ function printWords () {
     tdWord.textContent = word;
     ///still need outside scores and bonus variables
 }
+
 
 populateTiles();
 getTileValue();
@@ -151,6 +170,7 @@ submit.addEventListener("click", function (e) {
 
     }
     validWord = true;
+    scoreOfWord();
 });
 
 add click event functionality to allow users to click on the letters (will be helpful for mobile)
@@ -189,7 +209,8 @@ loop thru the returned JSON array - if we don't find the exact word match, retur
 
 //     // add high score to local storage 
 
-    var previousHighScores = JSON.parse(localStorage.getItem('previousHighScores'));
-    if (previousHighScores == null) previousHighScores = [];
-    previousHighScores.push(scoreToLog);
-    localStorage.setItem("previousHighScores", JSON.stringify(previousHighScores));
+//     var previousHighScores = JSON.parse(localStorage.getItem('previousHighScores'));
+//     if (previousHighScores == null) previousHighScores = [];
+//     previousHighScores.push(scoreToLog);
+//     localStorage.setItem("previousHighScores", JSON.stringify(previousHighScores))
+
