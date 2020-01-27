@@ -2,7 +2,7 @@ let bank = document.querySelector("#word-bank");
 let time = document.querySelector("#time");
 let tileDiv = document.querySelector("#tiles");
 let tileNum = document.querySelector("#tile-num");
-let input = document.querySelector("#input");
+let input = document.querySelector(".pure-input-rounded");
 let submit = document.querySelector("#submit");
 let letterValue = document.querySelectorAll(".letter-value");
 let letterFace = document.querySelectorAll(".letter");
@@ -21,18 +21,24 @@ let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, '
 let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
-let timer = 240;
-
+let timer = 10;
 
 tileNum.textContent = "Tiles left: " + leftTiles;
 score.textContent = "Score: " + userScore;
 input.value = '';
 
+count();
+//timer countdown
 // *********************** GLOBAL FUNCTIONS ******************************
-
 function count() {
+    
     let s = 60;
-    setInterval(function () {
+    let tick = setInterval(ticker, 1000);
+    function stopCount () {
+        clearInterval(tick); 
+    }
+    ticker();
+    function ticker () {
         let m = timer / 60;
         if (timer > 0) {
             timer--;
@@ -41,10 +47,12 @@ function count() {
         } if (s === 0) {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
+            stopCount ();
             let h1 = document.createElement("p");
             let form = document.createElement("form");
             let name = document.createElement("input");
             let button = document.createElement("button");
+            
             gameBody.replaceWith(h1);
             h1.textContent = "You're Done! Enter your name to submit score.";
             h1.appendChild(form);
@@ -55,18 +63,31 @@ function count() {
             button.setAttribute("class", "pure-button pure-button-primary");
             button.setAttribute("id", "endBtn");
             name.setAttribute("class", "pure-input-rounded");
+            name.setAttribute("id", "inp");
 
             let endBtn = document.querySelector("#endBtn");
-
+            let inp = document.querySelector("#inp");
+            console.log(endBtn);
             endBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                localStorage.setItem("score", userScore);
+                let highScores = JSON.parse(localStorage.getItem("highscores"));
+                if (highScores == null) highScores = [];
+                let userName = inp.value;
+                let user = {
+                    user: userName,
+                    score: userScore
+                };
+                
+                localStorage.setItem("user", JSON.stringify(user));
+                
+                highScores.push(user); 
+                localStorage.setItem("highscores", JSON.stringify(highScores));
                 window.location.href = "scores.html";
             });
         }
         console.log(timer)
-    }, 1000);
-};
+    };
+}
 
 function compareLetters() {
     let userWord = input.value.trim().toUpperCase();
@@ -185,7 +206,6 @@ function printWords() {
 
 populateTiles();
 getTileValue();
-count();
 
 tileButton.addEventListener('click', function (e) {
     console.log('a tile broheim');
