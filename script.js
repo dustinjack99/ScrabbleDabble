@@ -23,6 +23,7 @@ let tileBag = spl.split("");
 let leftTiles = tileBag.length;
 let timer = 240;
 
+let consumedLetters = [];
 
 tileNum.textContent = "Tiles left: " + leftTiles;
 score.textContent = "Score: " + userScore;
@@ -64,7 +65,6 @@ function count() {
                 window.location.href = "scores.html";
             });
         }
-        console.log(timer)
     }, 1000);
 };
 
@@ -75,24 +75,44 @@ function compareLetters() {
         let thisLetter = userLetters[i]
         if (displayedLetters.indexOf(thisLetter) > -1) {
             console.log('valid letter');
+            consumedLetters.push(thisLetter);
         } else {
             console.log('letter not included');
             //need to update this ********************
             alert('Not a valid word');
+            consumedLetters = [];
             validWord = false;
             return;
         }
     }
 };
 
+function getTilesToReplace() {
+    // console.log(consumedLetters);
+    for (let i = 0; i < consumedLetters.length; i++) {
+        let consumedLetter = consumedLetters[i];
+        let tileIndex = displayedLetters.indexOf(consumedLetter);
+        let index = Math.floor(Math.random() * tileBag.length)
+        let replacementLetter = tileBag[index]
+        tileBag.splice(index, 1);
+        var leftTiles = tileBag.length;
+        tileNum.textContent = "Tiles left: " + leftTiles;
+        displayedLetters.splice(tileIndex, 1, replacementLetter);
+        console.log(displayedLetters);
+    }
+    for (let i = 0; i < letterFace.length; i++) {
+        letterFace[i].textContent = displayedLetters[i];
+    }
+    getTileValue();
+    consumedLetters = [];
+}
+
 function populateTiles() {
     displayedLetters = [];
     /// this may cause a problem user doesn't use each letter - come back to this 
     for (let i = 0; i < letterFace.length; i++) {
-
         let index = Math.floor(Math.random() * tileBag.length)
         let letter = tileBag[index]
-
         tileBag.splice(index, 1);
         var leftTiles = tileBag.length;
         letterFace[i].textContent = letter;
@@ -121,8 +141,6 @@ function checkIfWord() {
         .then(function (response) {
             return response.json();
         }).then(function (json) {
-
-            console.log(json);
             if (typeof json[0] === 'object') {
                 console.log('its a word');
                 submittedWord = word.toUpperCase();
@@ -136,13 +154,14 @@ function checkIfWord() {
                     }).then(function (j) {
                         let randImg = Math.floor(Math.random() * 25)
                         let gif = j.data[randImg].images.original.url;
-                        // console.log(randImg);
                         image.setAttribute("src", gif);
                     });
+                getTilesToReplace();
             } else {
                 //need to update this ********************
                 alert('Try again, that aint not a word no one can use.')
                 console.log('this is not a word');
+                consumedLetters = [];
             }
         });
 };
@@ -185,7 +204,7 @@ function printWords() {
 
 populateTiles();
 getTileValue();
-count();
+// count();
 
 tileButton.addEventListener('click', function (e) {
     console.log('a tile broheim');
@@ -198,8 +217,6 @@ submit.addEventListener("click", function (e) {
         checkIfWord();
     }
     validWord = true;
-
-    //populateTiles();
 });
 
 // add click event functionality to allow users to click on the letters (will be helpful for mobile)
