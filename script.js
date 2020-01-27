@@ -9,8 +9,11 @@ let letterFace = document.querySelectorAll(".letter");
 let form = document.querySelector(".pure-form");
 let score = document.querySelector("#score");
 let image = document.querySelector("#returnImg");
+let tileButton = document.querySelector('.letter');
+let tableBody = document.querySelector("#table-body");
 let table = document.querySelector(".pure-table");
 let gameBody = document.querySelector("#game-container");
+
 let userScore = 0;
 let displayedLetters = [];
 let validWord = true;
@@ -26,6 +29,7 @@ input.value = '';
 
 count();
 //timer countdown
+// *********************** GLOBAL FUNCTIONS ******************************
 function count() {
     
     let s = 60;
@@ -94,12 +98,13 @@ function compareLetters() {
             console.log('valid letter');
         } else {
             console.log('letter not included');
+            //need to update this ********************
             alert('Not a valid word');
             validWord = false;
             return;
         }
     }
-}
+};
 
 function populateTiles() {
     displayedLetters = [];
@@ -115,7 +120,7 @@ function populateTiles() {
         tileNum.textContent = "Tiles left: " + leftTiles;
         displayedLetters.push(letter);
     }
-}
+};
 
 function getTileValue() {
     for (let i = 0; i < letterFace.length; i++) {
@@ -123,7 +128,7 @@ function getTileValue() {
         let score = scores[letter]
         letterValue[i].textContent = score;
     }
-}
+};
 
 function checkIfWord() {
     let word = input.value;
@@ -142,6 +147,7 @@ function checkIfWord() {
             if (typeof json[0] === 'object') {
                 console.log('its a word');
                 submittedWord = word.toUpperCase();
+                printWords();
                 input.value = '';
 
                 //fetch for Giphy API
@@ -155,19 +161,20 @@ function checkIfWord() {
                         image.setAttribute("src", gif);
                     });
             } else {
-
+                //need to update this ********************
+                alert('Try again, that aint not a word no one can use.')
                 console.log('this is not a word');
             }
         });
+};
 
-}
 
 function printWords() {
     let scoreOfWord = 0;
     let userWord = input.value.trim().toUpperCase();
     let userLetters = userWord.split("");
     let bonusOfWord = 0;
-    var row = table.insertRow(1);
+    var row = tableBody.insertRow(0);
     var wordCell = row.insertCell(0);
     var scoreCell = row.insertCell(1);
     var bonusCell = row.insertCell(2);
@@ -177,18 +184,32 @@ function printWords() {
         scoreOfWord = scoreOfWord + scoreOfLetter;
     };
     console.log("The score of " + userWord + " is " + scoreOfWord + ". Great Job!");
+    // bonus for lenght of word 
+    if (userLetters.length > 6) {
+        bonusOfWord = 10;
+    } else if (userLetters.length > 5) {
+        bonusOfWord = 5;
+    } else if (userLetters.length > 4) {
+        bonusOfWord = 3;
+    } else if (userLetters.length > 3) {
+        bonusOfWord = 1;
+    }
+    //populate the table and update score 
     wordCell.innerHTML = userWord;
     scoreCell.innerHTML = scoreOfWord;
     bonusCell.innerHTML = bonusOfWord;
     userScore = userScore + scoreOfWord + bonusOfWord;
     score.textContent = "Score: " + userScore;
+};
 
-    ///still need outside scores and bonus variables
-}
-
+//// ******** start game state ********* ////
 
 populateTiles();
 getTileValue();
+
+tileButton.addEventListener('click', function (e) {
+    console.log('a tile broheim');
+}); 
 
 submit.addEventListener("click", function (e) {
     e.preventDefault();
@@ -197,8 +218,8 @@ submit.addEventListener("click", function (e) {
         checkIfWord();
     }
     validWord = true;
-    printWords();
-    populateTiles();
+
+    //populateTiles();
 });
 
 // add click event functionality to allow users to click on the letters (will be helpful for mobile)
