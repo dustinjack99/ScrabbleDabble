@@ -13,6 +13,7 @@ let tileButton = document.querySelector('.letter');
 let tableBody = document.querySelector("#table-body");
 let table = document.querySelector(".pure-table");
 let gameBody = document.querySelector("#game-container");
+let newTilesBtn = document.querySelector('#new-tile-btn');
 
 let userScore = 0;
 let displayedLetters = [];
@@ -23,6 +24,7 @@ let tileBag = spl.split("");
 let leftTiles = tileBag.length;
 let timer = 120;
 let consumedLetters = [];
+let changeAllTiles = false;
 
 
 tileNum.textContent = "Tiles left: " + leftTiles;
@@ -111,7 +113,6 @@ function compareLetters() {
 };
 
 function getTilesToReplace() {
-    // console.log(consumedLetters);
     for (let i = 0; i < consumedLetters.length; i++) {
         let consumedLetter = consumedLetters[i];
         let tileIndex = displayedLetters.indexOf(consumedLetter);
@@ -121,7 +122,6 @@ function getTilesToReplace() {
         var leftTiles = tileBag.length;
         tileNum.textContent = "Tiles left: " + leftTiles;
         displayedLetters.splice(tileIndex, 1, replacementLetter);
-        console.log(displayedLetters);
     }
     for (let i = 0; i < letterFace.length; i++) {
         letterFace[i].textContent = displayedLetters[i];
@@ -132,11 +132,12 @@ function getTilesToReplace() {
 
 function populateTiles() {
     displayedLetters = [];
-    /// this may cause a problem user doesn't use each letter - come back to this 
     for (let i = 0; i < letterFace.length; i++) {
         let index = Math.floor(Math.random() * tileBag.length)
         let letter = tileBag[index]
-        tileBag.splice(index, 1);
+        if (!changeAllTiles) {
+            tileBag.splice(index, 1);
+        }
         var leftTiles = tileBag.length;
         letterFace[i].textContent = letter;
         tileNum.textContent = "Tiles left: " + leftTiles;
@@ -243,6 +244,15 @@ submit.addEventListener("click", function (e) {
     }
     validWord = true;
 });
+
+newTilesBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    changeAllTiles = true;
+    populateTiles();
+    userScore -= 2;
+    score.textContent = "Score: " + userScore;
+    
+})
 
 // add click event functionality to allow users to click on the letters (will be helpful for mobile)
 
