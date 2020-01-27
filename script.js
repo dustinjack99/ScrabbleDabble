@@ -89,7 +89,7 @@ function count() {
                 window.location.href = "scores.html";
             });
         }
-    }
+    };
 };
 
 
