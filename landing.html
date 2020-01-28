@@ -10,32 +10,36 @@
     <link rel='stylesheet' type='text/css' href='styles.css'>
 </head>
 
-<body id='landing-page'>
+<body id='landing-page-container'>
     <header>
         <h1>Scrabble Dabble</h1>
     </header>
 
-    <div>
-        <h3 id='description-header'>Welcome to Scrabble Dabble! A challenging game that will test your scrabble skills.</h3>
-        <p id='description-para'>Using letters tiles from the scrabble tile bag, make as many words as you can in the time allowed. Once you use a letter tile it is removed from the tile bag. Try to use as many tiles as you can! The longer the word, the more points you will earn. Use all seven tiles to get an extra bonus! Can't spell a word out of the letters? That's okay, you can dump them back in the bag. However it will cost you a few points. After playing, save your score and take a look at the highscore page to see if you did better than last time.</p>
+    <main id='landing-page'>
+        <h3>Welcome to Scrabble Dabble! A challenging game that will test your scrabble skills.</h3>
+
+        <a id='game-link' href='index.html'>
+            <button id='start-btn'>
+                <div>P</div>
+                <div>L</div>
+                <div>A</div>
+                <div>Y</div>
+                <i class="fas fa-star fa-2x"></i>
+                <div>G</div>
+                <div>A</div>
+                <div>M</div>
+                <div>E</div>
+            </button>
+        </a>
+
+        <p>Using letter tiles from the scrabble tile bag, make as many words as you can in the time allowed. Once you use a letter tile it is removed from the tile bag.</p>
+        <p>Try to use as many tiles as you can! The longer the word, the more points you will earn. Use all seven tiles to get an extra bonus!</p>
+        <p>Can't spell a word out of the letters? That's okay, you can dump them back in the bag. However it will cost you a few points.</p>
+        <p>After playing, save your score and take a look at the highscore page to see if you did better than last time.</p>
         
-        <div id='start-msg-container'>
-            <div>P</div>
-            <div>L</div>
-            <div>A</div>
-            <div>Y</div>
-            <a id='game-link' href='index.html'>
-                <button id='start-btn'>
-                    <i class="fas fa-star fa-md"></i>
-                </button>
-            </a>
-            <div>G</div>
-            <div>A</div>
-            <div>M</div>
-            <div>E</div>
-        </div>
+        
             
-    </div>
+    </main>
     
 </body>
 </html>
