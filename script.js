@@ -14,6 +14,7 @@ const tableBody = document.querySelector("#table-body");
 const table = document.querySelector(".pure-table");
 const gameBody = document.querySelector("#game-container");
 const newTilesBtn = document.querySelector('#new-tile-btn');
+const validContainer = document.querySelector('#validity');
 
 let userScore = 0;
 let displayedLetters = [];
@@ -35,14 +36,14 @@ count();
 // *********************** GLOBAL FUNCTIONS ******************************
 
 function count() {
-    
+
     let s = 60;
     let tick = setInterval(ticker, 1000);
-    function stopCount () {
-        clearInterval(tick); 
+    function stopCount() {
+        clearInterval(tick);
     }
     ticker();
-    function ticker () {
+    function ticker() {
         let m = timer / 60;
         if (timer > 0) {
             timer--;
@@ -51,6 +52,7 @@ function count() {
         } if (s === 0) {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
+
             stopCount ();
             let p = document.createElement("p");
             let form = document.createElement("form");
@@ -61,6 +63,7 @@ function count() {
             p.textContent = "Game over! Enter your name to submit score:";
             p.className = 'game-over-msg';
             p.appendChild(form);
+
             form.appendChild(name);
             form.appendChild(button);
             button.textContent = "Submit";
@@ -73,7 +76,7 @@ function count() {
             let endBtn = document.querySelector("#endBtn");
             let inp = document.querySelector("#inp");
             console.log(endBtn);
-            endBtn.addEventListener('click', function(e) {
+            endBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 let highScores = JSON.parse(localStorage.getItem("highscores"));
                 if (highScores == null) highScores = [];
@@ -82,10 +85,10 @@ function count() {
                     user: userName,
                     score: userScore
                 };
-                
+
                 localStorage.setItem("user", JSON.stringify(user));
-                
-                highScores.push(user); 
+
+                highScores.push(user);
                 localStorage.setItem("highscores", JSON.stringify(highScores));
                 window.location.href = "scores.html";
             });
@@ -97,15 +100,26 @@ function count() {
 function compareLetters() {
     let userWord = input.value.trim().toUpperCase();
     let userLetters = userWord.split("");
+    var testingLetters = displayedLetters.slice(0);
     for (let i = 0; i < userLetters.length; i++) {
         let thisLetter = userLetters[i]
-        if (displayedLetters.indexOf(thisLetter) > -1) {
-            console.log('valid letter');
+        if (userLetters.length < 2) {
+            displayInvalidWork();
+            consumedLetters = [];
+            validWord = false;
+            return;
+        } else if (displayedLetters.indexOf(thisLetter) > -1) {
             consumedLetters.push(thisLetter);
+            if (testingLetters.indexOf(thisLetter) > -1) {
+                testingLetters.splice(testingLetters.indexOf(thisLetter), 1)
+            } else {
+                displayInvalidWork();
+                consumedLetters = [];
+                validWord = false;
+                return;
+            }
         } else {
-            console.log('letter not included');
-            //need to update this ********************
-            alert('Not a valid word');
+            displayInvalidWork();
             consumedLetters = [];
             validWord = false;
             return;
@@ -127,6 +141,7 @@ function getTilesToReplace() {
     for (let i = 0; i < letterFace.length; i++) {
         letterFace[i].textContent = displayedLetters[i];
     }
+    console.log(letterFace);
     getTileValue();
     consumedLetters = [];
 }
@@ -138,7 +153,7 @@ function populateTiles() {
         let letter = tileBag[index]
         if (!changeAllTiles) {
             tileBag.splice(index, 1);
-        }
+        } 
         var leftTiles = tileBag.length;
         letterFace[i].textContent = letter;
         tileNum.textContent = "Tiles left: " + leftTiles;
@@ -153,6 +168,7 @@ function getTileValue() {
         letterValue[i].textContent = score;
     }
 };
+
 
 function checkIfWord() {
     let word = input.value;
@@ -184,12 +200,21 @@ function checkIfWord() {
                 getTilesToReplace();
             } else {
                 //need to update this ********************
-                alert('Try again, that aint not a word no one can use.')
+                displayInvalidWork();
                 console.log('this is not a word');
                 consumedLetters = [];
             }
         });
 };
+
+function displayInvalidWork() {
+    validContainer.textContent = 'Sorry, that is not a valid word. Try again!';
+    input.value = '';
+    setTimeout(function () {
+        validContainer.textContent = '';
+    }, 2000);
+};
+
 
 function printWords() {
     let scoreOfWord = 0;
@@ -238,10 +263,6 @@ function printWords() {
 populateTiles();
 getTileValue();
 
-tileButton.addEventListener('click', function (e) {
-    console.log('a tile broheim');
-}); 
-
 submit.addEventListener("click", function (e) {
     e.preventDefault();
     compareLetters();
@@ -251,11 +272,11 @@ submit.addEventListener("click", function (e) {
     validWord = true;
 });
 
-newTilesBtn.addEventListener('click', function(e) {
+newTilesBtn.addEventListener('click', function (e) {
     e.preventDefault();
     changeAllTiles = true;
     populateTiles();
     userScore -= 2;
     score.textContent = "Score: " + userScore;
-    
-})
+
+});

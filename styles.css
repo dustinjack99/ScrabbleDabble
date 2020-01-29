@@ -60,11 +60,28 @@ body {
     background-color: lightpink;
 } 
 
+/* --- Footer Styles --- */
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 35px;
+    width: 100%;
+    background-color:rgb(224, 107, 103);
+    color: white;
+    text-align: center;
+  }
+
+#foot-copy {
+    padding-top: 10px;
+}
 /* --- Highscores Styles --- */
 
 #highscores {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 #scoreboard {
     margin: 20px auto;
     width: 60%;
@@ -177,6 +194,13 @@ input {
     padding: 10px;
     text-align: center;
     width: 80%;
+}
+
+#validity {
+    padding: 10px;
+    font-size: 1.2em;
+    color: red;
+    font-weight: bold;
 }
 
 /* --- Word Bank Styles --- */
