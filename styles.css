@@ -57,6 +57,23 @@ body {
     background-color: lightpink;
 } 
 
+/* --- Footer Styles --- */
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color:rgb(224, 107, 103);
+    color: white;
+    text-align: center;
+  }
+
+#foot-copy {
+    padding-top: 10px;
+}
+
 /*  --- Header Styles --- */
 
 header {
