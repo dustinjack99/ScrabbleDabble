@@ -10,68 +10,65 @@ body {
 /* --- Landing Page Styles --- */
 
 #landing-page {
-    background-color: rgb(102, 102, 109);
+    /* background-color: rgb(102, 102, 109); */
+    background-color: rgb(255, 255, 202);
     font-family: Arial, Helvetica, sans-serif;
 }
-#landing-page h1 {
-    color: white;
-    font-size: 3em;
+#landing-page h3 {
+    margin: 20px auto;
     font-weight: lighter;
-    margin: 30px auto;
-}
-#description-header,
-#description-para {
-    color: white;
-    font-weight: lighter;
-    margin: 15px auto;
     text-align: center;
-    width: 90%;
+    width: 80%;
 }
-#start-msg-container {
+#landing-page p {
+    font-size: 1.1em;
+    margin: 15px auto;
+    text-align: justify;
+    width: 85%;
+}
+#game-link {
+    text-decoration: none;
+}
+#start-btn {
+    border-bottom: none;
     border-left: 2px solid white;
     border-right: 2px solid white;
+    border-top: none;
     color: black;
     display: flex;
     flex-direction: row;
-    margin: 20px auto;
+    margin: 30px auto;
     text-transform: uppercase;
-    width: 450px;
+    width: 342px;
 }
-#start-msg-container div,
-#start-msg-container button {
-    border: 2px solid white;
-    font-size: 1.5em;
-    height: 50px;
-    margin: 0 auto;
-    text-align: center;
-    width: 50px;
-}
-#start-msg-container div {
+#start-btn div, 
+.fa-2x {
     background-color: rgb(248, 248, 136);
-    padding-top: 10px;
-}
-#start-msg-container button {
-    background-color: lightpink;
+    border: 2px solid white;
     cursor: pointer;
+    font-size: 1.6em;
+    height: 38px;
+    margin: 0 auto;
+    padding-top: 5px;
+    text-align: center;
+    width: 38px;
 }
-.fa-star {
-    color: black;
-}
+.fa-2x {
+    background-color: lightpink;
+} 
 
 /*  --- Header Styles --- */
 
 header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 h1 {
     font-size: 2.1em;
     font-weight: lighter;
-    margin: 20px auto 30px;
+    margin: 30px auto 25px;
     text-align: center;
     width: 80%;
 }
-
 header div {
     display: flex;
     flex-direction: row;
@@ -127,13 +124,28 @@ form {
     width: 60%;
 }
 input {
-    margin: auto;
+    margin: 10px auto;
+    width: 100%;
+}
+#btns-container {
+    display: flex;
+    justify-content: space-around;
+}
+#submit,
+#new-tile-btn {
+    border-radius: 5px;
+    color: white;
+    font-size: 0.9em;
+    width: 110px;
 }
 #submit {
     background: radial-gradient(rgb(76, 154, 223), rgb(2,117,216));
-    border-radius: 5px;
-    margin: auto;
-    width: 50%;
+}
+#new-tile-btn {
+    background: radial-gradient(rgb(224, 107, 103), rgb(217,83,79));
+}
+.fa-sm {
+    padding: 0 6px;
 }
 
 /* --- Word Bank Styles --- */
@@ -156,7 +168,24 @@ table,
 
 @media (min-width: 568px) {
     header div {
+        font-size: 1.1em;
         width: 70%;
+    }
+    #landing-page h3 {
+        width: 65%;
+    }
+    #landing-page p {
+        width: 80%;
+    }
+    #start-btn {
+        margin: 20px auto;
+        width: 360px;
+    }
+    #start-btn div, 
+    .fa-2x {
+        height: 40px;
+        padding-top: 6px;
+        width: 40px;
     }
     #tiles {
         width: 80%;
@@ -176,10 +205,12 @@ table,
     }
     form {
         font-size: 1em;
-        width: 80%;
+        width: 60%;
     }
-    button {
-        width: 25%;
+    #submit,
+    #new-tile-btn {
+        margin-top: 10px;
+        width: 150px;
     }
     #word-bank {
         width: 80%;
@@ -189,8 +220,24 @@ table,
     header div {
         width: 60%;
     }
-    form {
+    #landing-page h3 {
+        font-size: 1.3em;
         width: 60%;
+    }
+    #landing-page p {
+        font-size: 1.2em;
+        width: 75%;
+    }
+    #start-btn {
+        margin: 40px auto;
+        width: 405px;
+    }
+    #start-btn div, 
+    .fa-2x {
+        font-size: 1.7em;
+        height: 45px;
+        padding-top: 9px;
+        width: 45px;
     }
     .tile {
         height: 70px;
@@ -204,8 +251,13 @@ table,
         font-size: 1.1em;
         padding: 46px 5px 0 0;
     }
-    button {
-        width: 30%;
+    form {
+        width: 50%;
+    }
+    #submit,
+    #new-tile-btn {
+        font-size: 1.1em;
+        width: 160px;
     }
     #word-bank {
         width: 60%;
@@ -224,17 +276,32 @@ table,
     header div {
         display: flex;
         flex-direction: column;
-        margin: 20px 0px 5px 0px;
+        font-size: 1.3em;
+        margin: 40px 0px 5px 0px;
         width: 28%;
     }
     header div p {
         font-size: 1em;
         padding: 8px;
     }
-
+    #landing-page h3 {
+        font-size: 1.6em;
+    }
+    #landing-page p {
+        font-size: 1.5em;
+    }
+    #start-btn {
+        width: 450px;
+    }
+    #start-btn div, 
+    .fa-2x {
+        font-size: 1.9em;
+        height: 50px;
+        padding-top: 8px;
+        width: 50px;
+    }
     #game-container {
         flex-direction: row;
-        margin-top: 20px;
         padding: 20px 0;
     }
     #tiles-form-container  {
@@ -257,10 +324,55 @@ table,
         padding: 52px 5px 0 0;
     }
     form {
-        width: 90%;
+        width: 60%;
+    }
+    input {
+        height: 50px;
+    }
+    #submit,
+    #new-tile-btn {
+        font-size: 1.2em;
+        width: 180px;
     }
     #word-bank {
         margin-right: 10px;
         width: 28%;
+    }
+}
+@media (min-width: 1200px) {
+    #landing-page h3 {
+        font-size: 1.9em;
+        width: 55%;
+    }
+    #landing-page p {
+        font-size: 1.6em;
+        width: 70%;
+    }
+    #start-btn {
+        margin: 50px auto;
+        width: 540px;
+    }
+    #start-btn div, 
+    .fa-2x {
+        font-size: 2.1em;
+        height: 60px;
+        padding-top: 12px;
+        width: 60px;
+    }
+    h1 {
+        font-size: 3.8em;
+        padding-top: 40px;
+    }
+    header div {
+        font-size: 1.4em;
+        margin: 50px 0px 5px 0px;
+    }
+    #game-container {
+        margin-top: 10px;
+    }
+    #submit,
+    #new-tile-btn {
+        font-size: 1.4em;
+        width: 200px;
     }
 }

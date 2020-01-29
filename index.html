@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Scrabble Dabble</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
-    <link rel='stylesheet' type='text/css' href='styles.css'>
 
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel='stylesheet' type='text/css' href='styles.css'>
 </head>
 
 <body id='game-page'>
@@ -52,13 +53,19 @@
                     </div>    
                     <div class='tile'>
                         <p class='letter'>G</p>
-                        <p class='letter-value'>10</p>
+                        <p class='letter-value'>1</p>
                     </div>
                 </div>
-                <form class="pure-form">
-                    <input type="text" id="input" class="pure-input-rounded">
-                    <button type="submit" id="submit" class="pure-button pure-button-primary">Submit Word!</button>
-                    <button id='new-tile-btn'>Get all new tiles</button>
+                <form class='pure-form'>
+                    <input type='text' id='input' class='pure-input-rounded'>
+                    <div id='btns-container'>
+                        <button type='submit' id='submit' class='pure-button'>
+                            Submit<i class="fas fa-star fa-sm"></i>Word
+                        </button>
+                        <button type='submit' id='new-tile-btn' class='pure-button'>
+                            Dump<i class="fas fa-star fa-sm"></i>Tiles
+                        </button>
+                    </div>
                 </form>
             </div>
 
@@ -76,7 +83,7 @@
                     </tbody>
                 </table>
             </div>
-            <div><img id="returnImg"></div>
+            <div><img id='returnImg'></div>
         </div>
     </main>
 
