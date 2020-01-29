@@ -166,6 +166,13 @@ input {
     padding: 0 6px;
 }
 
+#validity {
+    padding: 10px;
+    font-size: 1.2em;
+    color: red;
+    font-weight: bold;
+}
+
 /* --- Word Bank Styles --- */
 
 #word-bank {

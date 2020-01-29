@@ -14,6 +14,7 @@ const tableBody = document.querySelector("#table-body");
 const table = document.querySelector(".pure-table");
 const gameBody = document.querySelector("#game-container");
 const newTilesBtn = document.querySelector('#new-tile-btn');
+const validContainer = document.querySelector('#validity');
 
 let userScore = 0;
 let displayedLetters = [];
@@ -104,7 +105,7 @@ function compareLetters() {
         } else {
             console.log('letter not included');
             //need to update this ********************
-            alert('Not a valid word');
+            displayInvalidWork();
             consumedLetters = [];
             validWord = false;
             return;
@@ -183,11 +184,19 @@ function checkIfWord() {
                 getTilesToReplace();
             } else {
                 //need to update this ********************
-                alert('Try again, that aint not a word no one can use.')
+                displayInvalidWork();
                 console.log('this is not a word');
                 consumedLetters = [];
             }
         });
+};
+
+function displayInvalidWork () {
+    validContainer.textContent = 'Sorry, that is not a valid word. Try again!';
+    input.value = '';
+    setTimeout(function () {
+        validContainer.textContent = '';
+    }, 2000);
 };
 
 
