@@ -144,7 +144,7 @@ function populateTiles() {
         let letter = tileBag[index]
         if (!changeAllTiles) {
             tileBag.splice(index, 1);
-        }
+        } 
         var leftTiles = tileBag.length;
         letterFace[i].textContent = letter;
         tileNum.textContent = "Tiles left: " + leftTiles;
