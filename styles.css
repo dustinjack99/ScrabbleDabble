@@ -10,7 +10,6 @@ body {
 /* --- Landing Page Styles --- */
 
 #landing-page {
-    /* background-color: rgb(102, 102, 109); */
     background-color: rgb(255, 255, 202);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -29,7 +28,7 @@ body {
 #game-link {
     text-decoration: none;
 }
-#start-btn {
+.board-design {
     border-bottom: none;
     border-left: 2px solid white;
     border-right: 2px solid white;
@@ -41,7 +40,7 @@ body {
     text-transform: uppercase;
     width: 342px;
 }
-#start-btn div, 
+.board-design div, 
 .fa-2x {
     background-color: rgb(248, 248, 136);
     border: 2px solid white;
@@ -56,6 +55,25 @@ body {
 .fa-2x {
     background-color: lightpink;
 } 
+
+/* --- Highscores Styles --- */
+
+#highscores {
+    font-family: Arial, Helvetica, sans-serif;
+}
+#scoreboard {
+    margin: 20px auto;
+    width: 60%;
+}
+#scoreboard div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+.fa-times {
+    cursor: pointer;
+}
 
 /*  --- Header Styles --- */
 
@@ -177,11 +195,11 @@ table,
     #landing-page p {
         width: 80%;
     }
-    #start-btn {
+    .board-design {
         margin: 20px auto;
         width: 360px;
     }
-    #start-btn div, 
+    .board-design div, 
     .fa-2x {
         height: 40px;
         padding-top: 6px;
@@ -228,11 +246,11 @@ table,
         font-size: 1.2em;
         width: 75%;
     }
-    #start-btn {
+    .board-design {
         margin: 40px auto;
         width: 405px;
     }
-    #start-btn div, 
+    .board-design div, 
     .fa-2x {
         font-size: 1.7em;
         height: 45px;
@@ -290,10 +308,10 @@ table,
     #landing-page p {
         font-size: 1.5em;
     }
-    #start-btn {
+    .board-design {
         width: 450px;
     }
-    #start-btn div, 
+    .board-design div, 
     .fa-2x {
         font-size: 1.9em;
         height: 50px;
@@ -348,11 +366,11 @@ table,
         font-size: 1.6em;
         width: 70%;
     }
-    #start-btn {
+    .board-design {
         margin: 50px auto;
         width: 540px;
     }
-    #start-btn div, 
+    .board-design div, 
     .fa-2x {
         font-size: 2.1em;
         height: 60px;
