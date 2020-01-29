@@ -13,18 +13,24 @@ for (i = 0; i < list.length; i++) {
   scoreBoard.appendChild(scoreDiv);
   li = document.createElement("li");
   li.textContent = `${list[i].user}'s score: ${list[i].score}`;
+  li.setAttribute("id", list[i].id);
   scoreDiv.appendChild(li);
   deleteBtn = document.createElement("i");
   deleteBtn.className = 'fas fa-times';
   scoreDiv.appendChild(deleteBtn);
 }
 
-// event listener on delete icon to call delete function
 scoreBoard.addEventListener('click', function(e) {
   if (e.target.nodeName === 'I') {
     let deleteIcon = e.target;
     let scoreLi = deleteIcon.previousSibling;
-    console.log(scoreLi.textContent);
-    console.log(list);
+    let scoreID = scoreLi.getAttribute("id");
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].id === scoreID) {
+        list.splice(i, 1);
+      }
+    }
+    scoreLi.parentElement.remove();
+    localStorage.setItem("highscores", JSON.stringify(list));
   }
 })
