@@ -22,7 +22,7 @@ let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, '
 let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
-let timer = 120;
+let timer = 5;
 let consumedLetters = [];
 let changeAllTiles = false;
 
@@ -32,8 +32,8 @@ score.textContent = "Score: " + userScore;
 input.value = '';
 
 count();
-//timer countdown
 // *********************** GLOBAL FUNCTIONS ******************************
+
 function count() {
     
     let s = 60;
@@ -52,14 +52,15 @@ function count() {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
             stopCount ();
-            let h1 = document.createElement("p");
+            let p = document.createElement("p");
             let form = document.createElement("form");
             let name = document.createElement("input");
             let button = document.createElement("button");
             
-            gameBody.replaceWith(h1);
-            h1.textContent = "You're Done! Enter your name to submit score.";
-            h1.appendChild(form);
+            gameBody.replaceWith(p);
+            p.textContent = "Game over! Enter your name to submit score:";
+            p.className = 'game-over-msg';
+            p.appendChild(form);
             form.appendChild(name);
             form.appendChild(button);
             button.textContent = "Submit";
@@ -190,7 +191,6 @@ function checkIfWord() {
         });
 };
 
-
 function printWords() {
     let scoreOfWord = 0;
     let userWord = input.value.trim().toUpperCase();
@@ -206,7 +206,7 @@ function printWords() {
         scoreOfWord = scoreOfWord + scoreOfLetter;
     };
     console.log("The score of " + userWord + " is " + scoreOfWord + ". Great Job!");
-    // bonus for lenght of word 
+    // bonus for length of word 
     if (userLetters.length > 6) {
         bonusOfWord = 10;
     } else if (userLetters.length > 5) {
@@ -220,17 +220,23 @@ function printWords() {
     wordCell.innerHTML = userWord;
     scoreCell.innerHTML = scoreOfWord;
     bonusCell.innerHTML = bonusOfWord;
+    if (bonusOfWord === 1) {
+        bonusCell.style.background = 'rgb(165, 210, 224)';
+    } else if (bonusOfWord === 3) {
+        bonusCell.style.background = 'rgb(255, 192, 203)';
+    } else if (bonusOfWord === 5) {
+        bonusCell.style.background = 'rgb(211, 6, 6)';
+    } else if (bonusOfWord === 10) {
+        bonusCell.style.background = 'rgb(6, 95, 95)';
+    }
     userScore = userScore + scoreOfWord + bonusOfWord;
     score.textContent = "Score: " + userScore;
 };
 
-//// ******** start game state ********* ////
+// ******** Start Game State ********* 
 
 populateTiles();
 getTileValue();
-
-// count();
-
 
 tileButton.addEventListener('click', function (e) {
     console.log('a tile broheim');
@@ -253,44 +259,3 @@ newTilesBtn.addEventListener('click', function(e) {
     score.textContent = "Score: " + userScore;
     
 })
-
-// add click event functionality to allow users to click on the letters (will be helpful for mobile)
-
-// update the tabl with word, scoree, and bonus 
-
-// update the score in the upper total 
-
-
-
-// update the tile count 
-
-// remove used tiles from the div 
-
-// add new tiles to the tiles div 
-
-// add some bonus functionality 
-
-// check for spelling 
-// loop thru the returned JSON array - if we don't find the exact word match, return a neg score and error 
-
-
-
-
-//     //validate the initials are entered 
-//     if (userName.value === "") {
-//         alert('Please enter your initials, Dabbler');
-//         return;
-//     };
-//     // Log high score into local storage 
-
-//     var scoreToLog = {
-//         'userName': userName.value.trim(),
-//         'userScore': userScore
-//     };
-
-//     // add high score to local storage 
-
-    // var previousHighScores = JSON.parse(localStorage.getItem('previousHighScores'));
-    // if (previousHighScores == null) previousHighScores = [];
-    // previousHighScores.push(scoreToLog);
-    // localStorage.setItem("previousHighScores", JSON.stringify(previousHighScores));

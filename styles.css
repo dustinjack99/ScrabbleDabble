@@ -19,6 +19,10 @@ body {
     text-align: center;
     width: 80%;
 }
+#game-rules {
+    font-weight: bold;
+    padding-bottom: 3px;
+}
 #landing-page p {
     font-size: 1.1em;
     margin: 15px auto;
@@ -150,13 +154,15 @@ input {
     justify-content: space-around;
 }
 #submit,
-#new-tile-btn {
+#new-tile-btn,
+#endBtn {
     border-radius: 5px;
     color: white;
     font-size: 0.9em;
     width: 110px;
 }
-#submit {
+#submit,
+#endBtn {
     background: radial-gradient(rgb(76, 154, 223), rgb(2,117,216));
 }
 #new-tile-btn {
@@ -164,6 +170,13 @@ input {
 }
 .fa-sm {
     padding: 0 6px;
+}
+.game-over-msg {
+    font-size: 1em;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    width: 80%;
 }
 
 /* --- Word Bank Styles --- */
@@ -174,12 +187,32 @@ input {
     width: 90%;
 }
 #word-bank h3 {
+    font-weight: lighter;
     padding: 10px 0;
     text-align: center;
+}
+#word-bank th {
+    background-color: rgb(248, 248, 136);
+    border: 2px solid white;
+    font-weight: lighter;
+    padding: 6px 20px;
+    text-transform: uppercase;
 }
 table, 
 #word-bank h3 {
     margin: 0 auto;
+}
+tbody {
+    border: 2px solid white;
+    padding: 6px 20px;
+    text-align: center;
+}
+
+/* --- Gif Styles --- */
+
+#gif-container {
+    margin: 10px auto;
+    max-width: 400px;
 }
 
 /* --- Media Queries --- */
@@ -280,6 +313,9 @@ table,
     #word-bank {
         width: 60%;
     }
+    .game-over-msg {
+        font-size: 1.2em;
+    }
 }
 @media (min-width: 1024px) {
     header {
@@ -356,6 +392,9 @@ table,
         margin-right: 10px;
         width: 28%;
     }
+    .game-over-msg {
+        font-size: 1.4em;
+    }
 }
 @media (min-width: 1200px) {
     #landing-page h3 {
@@ -392,5 +431,8 @@ table,
     #new-tile-btn {
         font-size: 1.4em;
         width: 200px;
+    }
+    .game-over-msg {
+        font-size: 1.6em;
     }
 }
