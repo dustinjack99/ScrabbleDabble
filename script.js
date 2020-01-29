@@ -23,8 +23,7 @@ let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, '
 let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
-let timer = 10;
-
+let timer = 180;
 let consumedLetters = [];
 let changeAllTiles = false;
 
@@ -38,11 +37,11 @@ count();
 
 // GUID function from: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
     });
-  }
+}
 
 function count() {
 
@@ -62,17 +61,16 @@ function count() {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
 
-            stopCount ();
+            stopCount();
             let p = document.createElement("p");
             let form = document.createElement("form");
             let name = document.createElement("input");
             let button = document.createElement("button");
-            
+
             gameBody.replaceWith(p);
             p.textContent = "Game over! Enter your name to submit score:";
             p.className = 'game-over-msg';
             p.appendChild(form);
-
             form.appendChild(name);
             form.appendChild(button);
             button.textContent = "Submit";
@@ -81,7 +79,6 @@ function count() {
             button.setAttribute("id", "endBtn");
             name.setAttribute("class", "pure-input-rounded");
             name.setAttribute("id", "inp");
-            name.setAttribute("required");
 
             let endBtn = document.querySelector("#endBtn");
             let inp = document.querySelector("#inp");
@@ -96,12 +93,12 @@ function count() {
                     user: userName,
                     score: userScore
                 };
+               
+                    localStorage.setItem("user", JSON.stringify(user));
+                    highScores.push(user);
+                    localStorage.setItem("highscores", JSON.stringify(highScores));
+                    window.location.href = "scores.html";
 
-                localStorage.setItem("user", JSON.stringify(user));
-                
-                highScores.push(user);
-                localStorage.setItem("highscores", JSON.stringify(highScores));
-                window.location.href = "scores.html";
             });
         }
     };
@@ -164,7 +161,7 @@ function populateTiles() {
         let letter = tileBag[index]
         if (!changeAllTiles) {
             tileBag.splice(index, 1);
-        } 
+        }
         var leftTiles = tileBag.length;
         letterFace[i].textContent = letter;
         tileNum.textContent = "Tiles left: " + leftTiles;
