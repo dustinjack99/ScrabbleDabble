@@ -1,19 +1,20 @@
-let bank = document.querySelector("#word-bank");
-let time = document.querySelector("#time");
-let tileDiv = document.querySelector("#tiles");
-let tileNum = document.querySelector("#tile-num");
-let input = document.querySelector(".pure-input-rounded");
-let submit = document.querySelector("#submit");
-let letterValue = document.querySelectorAll(".letter-value");
-let letterFace = document.querySelectorAll(".letter");
-let form = document.querySelector(".pure-form");
-let score = document.querySelector("#score");
-let image = document.querySelector("#returnImg");
-let tileButton = document.querySelector('.letter');
-let tableBody = document.querySelector("#table-body");
-let table = document.querySelector(".pure-table");
-let gameBody = document.querySelector("#game-container");
-let newTilesBtn = document.querySelector('#new-tile-btn');
+const bank = document.querySelector("#word-bank");
+const time = document.querySelector("#time");
+const tileDiv = document.querySelector("#tiles");
+const tileNum = document.querySelector("#tile-num");
+const input = document.querySelector(".pure-input-rounded");
+const submit = document.querySelector("#submit");
+const letterValue = document.querySelectorAll(".letter-value");
+const letterFace = document.querySelectorAll(".letter");
+const form = document.querySelector(".pure-form");
+const score = document.querySelector("#score");
+const image = document.querySelector("#returnImg");
+const tileButton = document.querySelector('.letter');
+const tableBody = document.querySelector("#table-body");
+const table = document.querySelector(".pure-table");
+const gameBody = document.querySelector("#game-container");
+const newTilesBtn = document.querySelector('#new-tile-btn');
+const validContainer = document.querySelector('#validity');
 
 let userScore = 0;
 let displayedLetters = [];
@@ -111,10 +112,8 @@ function compareLetters() {
         } else {
             console.log('letter not included');
             //need to update this ********************
-            let p = document.createElement("p");
-            form.append(p);
-            p.textContent = "Try again! Not a word."
-            p.setAttribute("class", "error-msg");
+
+            displayInvalidWork();
             consumedLetters = [];
             validWord = false;
             return;
@@ -194,13 +193,19 @@ function checkIfWord() {
                 getTilesToReplace();
             } else {
                 //need to update this ********************
-                let p = document.createElement("p");
-                form.append(p);
-                p.textContent = "Try again! Not a word."
-                p.setAttribute("class", "error-msg");
+                displayInvalidWork();
+                console.log('this is not a word');
                 consumedLetters = [];
             }
         });
+};
+
+function displayInvalidWork () {
+    validContainer.textContent = 'Sorry, that is not a valid word. Try again!';
+    input.value = '';
+    setTimeout(function () {
+        validContainer.textContent = '';
+    }, 2000);
 };
 
 
@@ -209,10 +214,10 @@ function printWords() {
     let userWord = input.value.trim().toUpperCase();
     let userLetters = userWord.split("");
     let bonusOfWord = 0;
-    var row = tableBody.insertRow(0);
-    var wordCell = row.insertCell(0);
-    var scoreCell = row.insertCell(1);
-    var bonusCell = row.insertCell(2);
+    let row = tableBody.insertRow(0);
+    let wordCell = row.insertCell(0);
+    let scoreCell = row.insertCell(1);
+    let bonusCell = row.insertCell(2);
     for (let i = 0; i < userLetters.length; i++) {
         let thisLetter = userLetters[i];
         let scoreOfLetter = scores[thisLetter];

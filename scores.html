@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>High Scores</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <h1>High Scores</h1>
-    <ol id="scoreboard"></ol>
-    <a href="landing.html">
-        <button> restart!</button>
-    </a>
+<body id='highscores'>
+    <header>
+        <h1>High Scores</h1>
+    </header>
+    
+    <main>
+        <ol id="scoreboard"></ol>
+    
+        <a id='game-link' href='landing.html'>
+            <button id='restart-btn' class='board-design'>
+                <div>P</div>
+                <div>L</div>
+                <div>A</div>
+                <div>Y</div>
+                <i class="fas fa-star fa-2x"></i>
+                <div>A</div>
+                <div>G</div>
+                <div>A</div>
+                <div>I</div>
+                <div>N</div>
+            </button>
+        </a>
+    </main>
 
     <div class="footer">
         <p>&copy Ballard Study Group 2020</p>
