@@ -174,8 +174,8 @@ function getTileValue() {
 function checkIfWord() {
     let word = input.value;
     word = word.toUpperCase();
-    let apiKey = "055bd940-2f3e-4ceb-aecb-c172dfea4116";
-    let url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/${word}?key=${apiKey}`;
+    let apiKey = "e5961c76-0e50-4eaf-a458-d21b3126ba0f";
+    let url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${apiKey}`;
     let gifUrl = `https://api.giphy.com/v1/gifs/search?api_key=7kwL3XTkF7VONSgoTjSPV7HpPUgMvkPu&q=${word}&limit=25&offset=0&rating=G&lang=en`;
 
     //fetch for Dictionary API
