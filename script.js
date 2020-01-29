@@ -24,6 +24,7 @@ let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPP
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
 let timer = 180;
+
 let consumedLetters = [];
 let changeAllTiles = false;
 
@@ -33,8 +34,8 @@ score.textContent = "Score: " + userScore;
 input.value = '';
 
 count();
-//timer countdown
 // *********************** GLOBAL FUNCTIONS ******************************
+
 function count() {
 
     let s = 60;
@@ -52,15 +53,18 @@ function count() {
         } if (s === 0) {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
-            stopCount();
-            let h1 = document.createElement("p");
+
+            stopCount ();
+            let p = document.createElement("p");
             let form = document.createElement("form");
             let name = document.createElement("input");
             let button = document.createElement("button");
+            
+            gameBody.replaceWith(p);
+            p.textContent = "Game over! Enter your name to submit score:";
+            p.className = 'game-over-msg';
+            p.appendChild(form);
 
-            gameBody.replaceWith(h1);
-            h1.textContent = "You're Done! Enter your name to submit score.";
-            h1.appendChild(form);
             form.appendChild(name);
             form.appendChild(button);
             button.textContent = "Submit";
@@ -228,7 +232,7 @@ function printWords() {
         scoreOfWord = scoreOfWord + scoreOfLetter;
     };
     console.log("The score of " + userWord + " is " + scoreOfWord + ". Great Job!");
-    // bonus for lenght of word 
+    // bonus for length of word 
     if (userLetters.length > 6) {
         bonusOfWord = 10;
     } else if (userLetters.length > 5) {
@@ -242,18 +246,23 @@ function printWords() {
     wordCell.innerHTML = userWord;
     scoreCell.innerHTML = scoreOfWord;
     bonusCell.innerHTML = bonusOfWord;
+    if (bonusOfWord === 1) {
+        bonusCell.style.background = 'rgb(165, 210, 224)';
+    } else if (bonusOfWord === 3) {
+        bonusCell.style.background = 'rgb(255, 192, 203)';
+    } else if (bonusOfWord === 5) {
+        bonusCell.style.background = 'rgb(211, 6, 6)';
+    } else if (bonusOfWord === 10) {
+        bonusCell.style.background = 'rgb(6, 95, 95)';
+    }
     userScore = userScore + scoreOfWord + bonusOfWord;
     score.textContent = "Score: " + userScore;
 };
 
-//// ******** start game state ********* ////
+// ******** Start Game State ********* 
 
 populateTiles();
 getTileValue();
-
-// letterFace.addEventListener('click', function (e) {
-//     console.log('a tile broheim');
-// });
 
 submit.addEventListener("click", function (e) {
     e.preventDefault();
