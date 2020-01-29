@@ -97,20 +97,25 @@ function count() {
 function compareLetters() {
     let userWord = input.value.trim().toUpperCase();
     let userLetters = userWord.split("");
+    var testingLetters = displayedLetters.slice(0);
     for (let i = 0; i < userLetters.length; i++) {
         let thisLetter = userLetters[i]
         if (userLetters.length < 2) {
             displayInvalidWork();
             consumedLetters = [];
             validWord = false;
-            return; 
+            return;
         } else if (displayedLetters.indexOf(thisLetter) > -1) {
-            console.log('valid letter');
             consumedLetters.push(thisLetter);
+            if (testingLetters.indexOf(thisLetter) > -1) {
+                testingLetters.splice(testingLetters.indexOf(thisLetter), 1)
+            } else {
+                displayInvalidWork();
+                consumedLetters = [];
+                validWord = false;
+                return;
+            }
         } else {
-            console.log('letter not included');
-            //need to update this ********************
-
             displayInvalidWork();
             consumedLetters = [];
             validWord = false;
@@ -133,6 +138,7 @@ function getTilesToReplace() {
     for (let i = 0; i < letterFace.length; i++) {
         letterFace[i].textContent = displayedLetters[i];
     }
+    console.log(letterFace);
     getTileValue();
     consumedLetters = [];
 }
@@ -198,7 +204,7 @@ function checkIfWord() {
         });
 };
 
-function displayInvalidWork () {
+function displayInvalidWork() {
     validContainer.textContent = 'Sorry, that is not a valid word. Try again!';
     input.value = '';
     setTimeout(function () {
@@ -245,12 +251,9 @@ function printWords() {
 populateTiles();
 getTileValue();
 
-// count();
-
-
-tileButton.addEventListener('click', function (e) {
-    console.log('a tile broheim');
-});
+// letterFace.addEventListener('click', function (e) {
+//     console.log('a tile broheim');
+// });
 
 submit.addEventListener("click", function (e) {
     e.preventDefault();
@@ -268,45 +271,4 @@ newTilesBtn.addEventListener('click', function (e) {
     userScore -= 2;
     score.textContent = "Score: " + userScore;
 
-})
-
-// add click event functionality to allow users to click on the letters (will be helpful for mobile)
-
-// update the tabl with word, scoree, and bonus 
-
-// update the score in the upper total 
-
-
-
-// update the tile count 
-
-// remove used tiles from the div 
-
-// add new tiles to the tiles div 
-
-// add some bonus functionality 
-
-// check for spelling 
-// loop thru the returned JSON array - if we don't find the exact word match, return a neg score and error 
-
-
-
-
-//     //validate the initials are entered 
-//     if (userName.value === "") {
-//         alert('Please enter your initials, Dabbler');
-//         return;
-//     };
-//     // Log high score into local storage 
-
-//     var scoreToLog = {
-//         'userName': userName.value.trim(),
-//         'userScore': userScore
-//     };
-
-//     // add high score to local storage 
-
-    // var previousHighScores = JSON.parse(localStorage.getItem('previousHighScores'));
-    // if (previousHighScores == null) previousHighScores = [];
-    // previousHighScores.push(scoreToLog);
-    // localStorage.setItem("previousHighScores", JSON.stringify(previousHighScores));
+});
