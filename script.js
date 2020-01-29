@@ -36,14 +36,14 @@ count();
 //timer countdown
 // *********************** GLOBAL FUNCTIONS ******************************
 function count() {
-    
+
     let s = 60;
     let tick = setInterval(ticker, 1000);
-    function stopCount () {
-        clearInterval(tick); 
+    function stopCount() {
+        clearInterval(tick);
     }
     ticker();
-    function ticker () {
+    function ticker() {
         let m = timer / 60;
         if (timer > 0) {
             timer--;
@@ -52,12 +52,12 @@ function count() {
         } if (s === 0) {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
-            stopCount ();
+            stopCount();
             let h1 = document.createElement("p");
             let form = document.createElement("form");
             let name = document.createElement("input");
             let button = document.createElement("button");
-            
+
             gameBody.replaceWith(h1);
             h1.textContent = "You're Done! Enter your name to submit score.";
             h1.appendChild(form);
@@ -73,7 +73,7 @@ function count() {
             let endBtn = document.querySelector("#endBtn");
             let inp = document.querySelector("#inp");
             console.log(endBtn);
-            endBtn.addEventListener('click', function(e) {
+            endBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 let highScores = JSON.parse(localStorage.getItem("highscores"));
                 if (highScores == null) highScores = [];
@@ -82,10 +82,10 @@ function count() {
                     user: userName,
                     score: userScore
                 };
-                
+
                 localStorage.setItem("user", JSON.stringify(user));
-                
-                highScores.push(user); 
+
+                highScores.push(user);
                 localStorage.setItem("highscores", JSON.stringify(highScores));
                 window.location.href = "scores.html";
             });
@@ -99,12 +99,20 @@ function compareLetters() {
     let userLetters = userWord.split("");
     for (let i = 0; i < userLetters.length; i++) {
         let thisLetter = userLetters[i]
+        if (userWord = 1) {
+            let p = document.createElement("p");
+            form.append(p);
+            p.textContent = "Try again! Not a word."
+            p.setAttribute("class", "error-msg");
+            return; 
+        }
         if (displayedLetters.indexOf(thisLetter) > -1) {
             console.log('valid letter');
             consumedLetters.push(thisLetter);
         } else {
             console.log('letter not included');
             //need to update this ********************
+
             displayInvalidWork();
             consumedLetters = [];
             validWord = false;
@@ -153,6 +161,7 @@ function getTileValue() {
         letterValue[i].textContent = score;
     }
 };
+
 
 function checkIfWord() {
     let word = input.value;
@@ -243,7 +252,7 @@ getTileValue();
 
 tileButton.addEventListener('click', function (e) {
     console.log('a tile broheim');
-}); 
+});
 
 submit.addEventListener("click", function (e) {
     e.preventDefault();
@@ -254,13 +263,13 @@ submit.addEventListener("click", function (e) {
     validWord = true;
 });
 
-newTilesBtn.addEventListener('click', function(e) {
+newTilesBtn.addEventListener('click', function (e) {
     e.preventDefault();
     changeAllTiles = true;
     populateTiles();
     userScore -= 2;
     score.textContent = "Score: " + userScore;
-    
+
 })
 
 // add click event functionality to allow users to click on the letters (will be helpful for mobile)
