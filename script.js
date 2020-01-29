@@ -73,6 +73,7 @@ function count() {
             button.setAttribute("id", "endBtn");
             name.setAttribute("class", "pure-input-rounded");
             name.setAttribute("id", "inp");
+            name.setAttribute("required");
 
             let endBtn = document.querySelector("#endBtn");
             let inp = document.querySelector("#inp");
@@ -174,8 +175,8 @@ function getTileValue() {
 function checkIfWord() {
     let word = input.value;
     word = word.toUpperCase();
-    let apiKey = "e5961c76-0e50-4eaf-a458-d21b3126ba0f";
-    let url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${apiKey}`;
+    let apiKey = "cae7acdb-466b-471f-8206-65892b9e24b3";
+    let url = `https://www.dictionaryapi.com/api/v3/references/sd3/json/${word}?key=${apiKey}`;
     let gifUrl = `https://api.giphy.com/v1/gifs/search?api_key=7kwL3XTkF7VONSgoTjSPV7HpPUgMvkPu&q=${word}&limit=25&offset=0&rating=G&lang=en`;
 
     //fetch for Dictionary API
