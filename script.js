@@ -99,14 +99,12 @@ function compareLetters() {
     let userLetters = userWord.split("");
     for (let i = 0; i < userLetters.length; i++) {
         let thisLetter = userLetters[i]
-        if (userWord = 1) {
-            let p = document.createElement("p");
-            form.append(p);
-            p.textContent = "Try again! Not a word."
-            p.setAttribute("class", "error-msg");
+        if (userLetters.length < 2) {
+            displayInvalidWork();
+            consumedLetters = [];
+            validWord = false;
             return; 
-        }
-        if (displayedLetters.indexOf(thisLetter) > -1) {
+        } else if (displayedLetters.indexOf(thisLetter) > -1) {
             console.log('valid letter');
             consumedLetters.push(thisLetter);
         } else {

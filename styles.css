@@ -62,7 +62,7 @@ body {
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 50px;
+    height: 35px;
     width: 100%;
     background-color:rgb(224, 107, 103);
     color: white;
@@ -71,12 +71,13 @@ body {
 
 #foot-copy {
     padding-top: 10px;
-  
+}
 /* --- Highscores Styles --- */
 
 #highscores {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 #scoreboard {
     margin: 20px auto;
     width: 60%;
