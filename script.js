@@ -23,7 +23,7 @@ let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, '
 let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
-let timer = 10;
+let timer = 900;
 
 let consumedLetters = [];
 let changeAllTiles = false;
@@ -210,9 +210,7 @@ function checkIfWord() {
                     });
                 getTilesToReplace();
             } else {
-                //need to update this ********************
                 displayInvalidWork();
-                console.log('this is not a word');
                 consumedLetters = [];
             }
         });
@@ -223,7 +221,7 @@ function displayInvalidWork() {
     input.value = '';
     setTimeout(function () {
         validContainer.textContent = '';
-    }, 2000);
+    }, 2500);
 };
 
 
@@ -257,13 +255,13 @@ function printWords() {
     scoreCell.innerHTML = scoreOfWord;
     bonusCell.innerHTML = bonusOfWord;
     if (bonusOfWord === 1) {
-        bonusCell.style.background = 'rgb(165, 210, 224)';
+        bonusCell.style.backgroundImage = 'radial-gradient(rgb(181, 220, 231), rgb(137, 201, 221))';
     } else if (bonusOfWord === 3) {
-        bonusCell.style.background = 'rgb(255, 192, 203)';
+        bonusCell.style.backgroundImage = 'radial-gradient(rgb(253, 205, 213), rgb(253, 179, 191))';
     } else if (bonusOfWord === 5) {
-        bonusCell.style.background = 'rgb(211, 6, 6)';
+        bonusCell.style.backgroundImage = 'radial-gradient(rgb(214, 79, 79), rgb(216, 50, 50)';
     } else if (bonusOfWord === 10) {
-        bonusCell.style.background = 'rgb(6, 95, 95)';
+        bonusCell.style.backgroundImage = 'radial-gradient(rgb(9, 139, 139), rgb(13, 119, 119)';
     }
     userScore = userScore + scoreOfWord + bonusOfWord;
     score.textContent = "Score: " + userScore;
