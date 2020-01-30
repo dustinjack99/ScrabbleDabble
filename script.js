@@ -1,3 +1,5 @@
+// ********** DOM Elements **********
+
 const bank = document.querySelector("#word-bank");
 const time = document.querySelector("#time");
 const tileDiv = document.querySelector("#tiles");
@@ -16,6 +18,8 @@ const gameBody = document.querySelector("#game-container");
 const newTilesBtn = document.querySelector('#new-tile-btn');
 const validContainer = document.querySelector('#validity');
 
+//  ********** Game Variables **********
+
 let userScore = 0;
 let displayedLetters = [];
 let validWord = true;
@@ -27,13 +31,14 @@ let timer = 180;
 let consumedLetters = [];
 let changeAllTiles = false;
 
-
+// Display score and tiles left
 tileNum.textContent = "Tiles left: " + leftTiles;
 score.textContent = "Score: " + userScore;
 input.value = '';
 
 count();
-// *********************** GLOBAL FUNCTIONS ******************************
+
+// ********** GLOBAL FUNCTIONS **********
 
 // GUID function from: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 function uuidv4() {
@@ -44,7 +49,6 @@ function uuidv4() {
 }
 
 function count() {
-
     let s = 60;
     let tick = setInterval(ticker, 1000);
     function stopCount() {
@@ -60,11 +64,12 @@ function count() {
         } if (s === 0) {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
-
-            stopCount();
+            stopCount ();
+          
             let p = document.createElement("p");
             let form = document.createElement("form");
             let name = document.createElement("input");
+            let nameMsg = document.createElement("p");
             let button = document.createElement("button");
 
             gameBody.replaceWith(p);
@@ -77,33 +82,42 @@ function count() {
             form.setAttribute("class", "pure-form");
             button.setAttribute("class", "pure-button pure-button-primary");
             button.setAttribute("id", "endBtn");
+            button.setAttribute("href", "scores.html");
             name.setAttribute("class", "pure-input-rounded");
             name.setAttribute("id", "inp");
+            nameMsg.setAttribute("id", "validity");
 
             let endBtn = document.querySelector("#endBtn");
             let inp = document.querySelector("#inp");
-            console.log(endBtn);
+
             endBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 let highScores = JSON.parse(localStorage.getItem("highscores"));
                 if (highScores == null) highScores = [];
-                let userName = inp.value;
-                let user = {
-                    id: uuidv4(),
-                    user: userName,
-                    score: userScore
-                };
-               
+
+                let userName; 
+                if (inp.value !== '') {
+                    userName = inp.value;
+                    let user = {
+                        id: uuidv4(),
+                        user: userName,
+                        score: userScore
+                    };
+    
                     localStorage.setItem("user", JSON.stringify(user));
+                    
                     highScores.push(user);
                     localStorage.setItem("highscores", JSON.stringify(highScores));
                     window.location.href = "scores.html";
+                } else {
+                    nameMsg.textContent = 'Please enter a name!';
+                    form.appendChild(nameMsg);
+                }
 
             });
         }
     };
 };
-
 
 function compareLetters() {
     let userWord = input.value.trim().toUpperCase();
@@ -177,7 +191,6 @@ function getTileValue() {
     }
 };
 
-
 function checkIfWord() {
     let word = input.value;
     word = word.toUpperCase();
@@ -207,9 +220,7 @@ function checkIfWord() {
                     });
                 getTilesToReplace();
             } else {
-                //need to update this ********************
                 displayInvalidWork();
-                console.log('this is not a word');
                 consumedLetters = [];
             }
         });
@@ -220,9 +231,8 @@ function displayInvalidWork() {
     input.value = '';
     setTimeout(function () {
         validContainer.textContent = '';
-    }, 2000);
+    }, 2500);
 };
-
 
 function printWords() {
     let scoreOfWord = 0;
@@ -254,13 +264,13 @@ function printWords() {
     scoreCell.innerHTML = scoreOfWord;
     bonusCell.innerHTML = bonusOfWord;
     if (bonusOfWord === 1) {
-        bonusCell.style.background = 'rgb(165, 210, 224)';
+        bonusCell.style.backgroundImage = 'radial-gradient(rgb(181, 220, 231), rgb(137, 201, 221))';
     } else if (bonusOfWord === 3) {
-        bonusCell.style.background = 'rgb(255, 192, 203)';
+        bonusCell.style.backgroundImage = 'radial-gradient(rgb(253, 205, 213), rgb(253, 179, 191))';
     } else if (bonusOfWord === 5) {
-        bonusCell.style.background = 'rgb(211, 6, 6)';
+        bonusCell.style.backgroundImage = 'radial-gradient(rgb(214, 79, 79), rgb(216, 50, 50)';
     } else if (bonusOfWord === 10) {
-        bonusCell.style.background = 'rgb(6, 95, 95)';
+        bonusCell.style.backgroundImage = 'radial-gradient(rgb(9, 139, 139), rgb(13, 119, 119)';
     }
     userScore = userScore + scoreOfWord + bonusOfWord;
     score.textContent = "Score: " + userScore;
