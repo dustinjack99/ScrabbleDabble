@@ -162,7 +162,6 @@ function getTilesToReplace() {
     for (let i = 0; i < letterFace.length; i++) {
         letterFace[i].textContent = displayedLetters[i];
     }
-    console.log(letterFace);
     getTileValue();
     consumedLetters = [];
 }
@@ -203,7 +202,6 @@ function checkIfWord() {
             return response.json();
         }).then(function (json) {
             if (typeof json[0] === 'object') {
-                console.log('its a word');
                 submittedWord = word.toUpperCase();
                 printWords();
                 input.value = '';
@@ -247,7 +245,6 @@ function printWords() {
         let scoreOfLetter = scores[thisLetter];
         scoreOfWord = scoreOfWord + scoreOfLetter;
     };
-    console.log("The score of " + userWord + " is " + scoreOfWord + ". Great Job!");
     // bonus for length of word 
     if (userLetters.length > 6) {
         bonusOfWord = 10;
@@ -293,6 +290,7 @@ newTilesBtn.addEventListener('click', function (e) {
     e.preventDefault();
     changeAllTiles = true;
     populateTiles();
+    getTileValue();
     userScore -= 2;
     score.textContent = "Score: " + userScore;
 
