@@ -27,7 +27,7 @@ let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, '
 let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
-let timer = 60;
+let timer = 180;
 let consumedLetters = [];
 let changeAllTiles = false;
 
