@@ -26,9 +26,15 @@ body {
     text-align: center;
     width: 80%;
 }
-#game-rules {
-    font-weight: bold;
-    padding-bottom: 3px;
+#rule-div {
+    background-color: rgb(248,248,136);
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding: 10px;
+    text-align: center;
+    width: 75%;
 }
 #landing-page p {
     font-size: 1.1em;
@@ -36,8 +42,21 @@ body {
     text-align: justify;
     width: 85%;
 }
+/* #land-title {
+    background-color: rgb(248, 248, 136);
+    border: 2px solid white;
+    border-radius: 5px;
+    color: rgb(224, 107, 103);
+    padding: 10px;
+    text-shadow: 2px 1px rgb(141, 61, 61);
+    width: 50%;
+} */
 #game-link {
     text-decoration: none;
+}
+#game-title {
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
 }
 .board-design {
     border-bottom: none;
@@ -233,15 +252,30 @@ tbody {
 /* --- Gif Styles --- */
 
 #gif-container {
-    margin: 10px auto;
+    background-color: rgb(248,248,136);
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding: 10px;
+    text-align: center;
 }
+
+#gif-title {
+    border-bottom: 2px solid white;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+
 #returnImg {
     border: 3px solid white;
     border-radius: 5px;
     box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
     margin: 10px auto;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 400px;
+    max-height: 320px;
 }
 
 /* --- Footer Styles --- */

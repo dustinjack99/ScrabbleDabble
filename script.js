@@ -42,11 +42,11 @@ count();
 
 // GUID function from: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
     });
-  }
+}
 
 function count() {
     let s = 60;
@@ -65,18 +65,17 @@ function count() {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
             stopCount ();
-
+          
             let p = document.createElement("p");
             let form = document.createElement("form");
             let name = document.createElement("input");
             let nameMsg = document.createElement("p");
             let button = document.createElement("button");
-            
+
             gameBody.replaceWith(p);
             p.textContent = "Game over! Enter your name to submit score:";
             p.className = 'game-over-msg';
             p.appendChild(form);
-
             form.appendChild(name);
             form.appendChild(button);
             button.textContent = "Submit";
@@ -95,6 +94,7 @@ function count() {
                 e.preventDefault();
                 let highScores = JSON.parse(localStorage.getItem("highscores"));
                 if (highScores == null) highScores = [];
+
                 let userName; 
                 if (inp.value !== '') {
                     userName = inp.value;
@@ -113,6 +113,7 @@ function count() {
                     nameMsg.textContent = 'Please enter a name!';
                     form.appendChild(nameMsg);
                 }
+
             });
         }
     };
@@ -174,7 +175,7 @@ function populateTiles() {
         let letter = tileBag[index]
         if (!changeAllTiles) {
             tileBag.splice(index, 1);
-        } 
+        }
         var leftTiles = tileBag.length;
         letterFace[i].textContent = letter;
         tileNum.textContent = "Tiles left: " + leftTiles;
