@@ -31,12 +31,8 @@ Writing the JavaScript we utilized a lot of the skills and knowledge we had gain
 Coming soon
 
 ## Next Steps
-Coming soon
+There are a few ways we would like to improve our game. First, we would like to make mobile device game play more user-friendly by adding a feature that enters a tile's letter into the input when a user clicks on it. So instead of a user needing to use their keyboard and type out a word they can just tap on the tiles. 
+Second, we would like to add more animation to the page. I would be fun if the user could drag around the tiles, or if there was an animated tile bag that dumped the tiles out onto the page. We could also add some smoother transitions to the current elements being appended to the page.
+Last, it may be helpful to add a button that gives the user the option to change the order of the displayed tiles. Something like a "re-scramble" button. This may help the user to see a word option they couldn't see before. 
 
 ### Thanks for reading! 
-
-
-
-
-
-
