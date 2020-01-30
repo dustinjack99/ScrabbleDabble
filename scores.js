@@ -1,13 +1,18 @@
+// DOM Elements
 const scoreBoard = document.querySelector("#scoreboard");
+
+// Score Variables
 let scoreDiv;
 let li;
 let deleteBtn;
 let list = JSON.parse(localStorage.getItem("highscores"));
 
+// function to sort scores
 list.sort(function (a, b) {
   return b.score - a.score;
 });
 
+// Append scores to page
 for (i = 0; i < list.length; i++) {
   scoreDiv = document.createElement("div");
   scoreBoard.appendChild(scoreDiv);
@@ -20,6 +25,7 @@ for (i = 0; i < list.length; i++) {
   scoreDiv.appendChild(deleteBtn);
 }
 
+// Remove scores from page
 scoreBoard.addEventListener('click', function(e) {
   if (e.target.nodeName === 'I') {
     let deleteIcon = e.target;
