@@ -1,3 +1,5 @@
+// ********** DOM Elements **********
+
 const bank = document.querySelector("#word-bank");
 const time = document.querySelector("#time");
 const tileDiv = document.querySelector("#tiles");
@@ -16,6 +18,8 @@ const gameBody = document.querySelector("#game-container");
 const newTilesBtn = document.querySelector('#new-tile-btn');
 const validContainer = document.querySelector('#validity');
 
+//  ********** Game Variables **********
+
 let userScore = 0;
 let displayedLetters = [];
 let validWord = true;
@@ -23,18 +27,18 @@ let scores = { 'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, '
 let spl = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
 let tileBag = spl.split("");
 let leftTiles = tileBag.length;
-let timer = 900;
-
+let timer = 180;
 let consumedLetters = [];
 let changeAllTiles = false;
 
-
+// Display score and tiles left
 tileNum.textContent = "Tiles left: " + leftTiles;
 score.textContent = "Score: " + userScore;
 input.value = '';
 
 count();
-// *********************** GLOBAL FUNCTIONS ******************************
+
+// ********** GLOBAL FUNCTIONS **********
 
 // GUID function from: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 function uuidv4() {
@@ -45,7 +49,6 @@ function uuidv4() {
   }
 
 function count() {
-
     let s = 60;
     let tick = setInterval(ticker, 1000);
     function stopCount() {
@@ -61,11 +64,12 @@ function count() {
         } if (s === 0) {
             s = s + 60;
         } if (timer === 0 || tileBag.length <= 0) {
-
             stopCount ();
+
             let p = document.createElement("p");
             let form = document.createElement("form");
             let name = document.createElement("input");
+            let nameMsg = document.createElement("p");
             let button = document.createElement("button");
             
             gameBody.replaceWith(p);
@@ -79,34 +83,40 @@ function count() {
             form.setAttribute("class", "pure-form");
             button.setAttribute("class", "pure-button pure-button-primary");
             button.setAttribute("id", "endBtn");
+            button.setAttribute("href", "scores.html");
             name.setAttribute("class", "pure-input-rounded");
             name.setAttribute("id", "inp");
-            name.setAttribute("required");
+            nameMsg.setAttribute("id", "validity");
 
             let endBtn = document.querySelector("#endBtn");
             let inp = document.querySelector("#inp");
-            console.log(endBtn);
+
             endBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 let highScores = JSON.parse(localStorage.getItem("highscores"));
                 if (highScores == null) highScores = [];
-                let userName = inp.value;
-                let user = {
-                    id: uuidv4(),
-                    user: userName,
-                    score: userScore
-                };
-
-                localStorage.setItem("user", JSON.stringify(user));
-                
-                highScores.push(user);
-                localStorage.setItem("highscores", JSON.stringify(highScores));
-                window.location.href = "scores.html";
+                let userName; 
+                if (inp.value !== '') {
+                    userName = inp.value;
+                    let user = {
+                        id: uuidv4(),
+                        user: userName,
+                        score: userScore
+                    };
+    
+                    localStorage.setItem("user", JSON.stringify(user));
+                    
+                    highScores.push(user);
+                    localStorage.setItem("highscores", JSON.stringify(highScores));
+                    window.location.href = "scores.html";
+                } else {
+                    nameMsg.textContent = 'Please enter a name!';
+                    form.appendChild(nameMsg);
+                }
             });
         }
     };
 };
-
 
 function compareLetters() {
     let userWord = input.value.trim().toUpperCase();
@@ -180,7 +190,6 @@ function getTileValue() {
     }
 };
 
-
 function checkIfWord() {
     let word = input.value;
     word = word.toUpperCase();
@@ -223,7 +232,6 @@ function displayInvalidWork() {
         validContainer.textContent = '';
     }, 2500);
 };
-
 
 function printWords() {
     let scoreOfWord = 0;
