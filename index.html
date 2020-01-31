@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Scrabble Dabble</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel='stylesheet' type='text/css' href='styles.css'>
 </head>
@@ -15,60 +18,83 @@
 <body id='game-page'>
     <div class='content'>
 
-    <header>
-        <h1>Scrabble Dabble</h1>
-        <div>
-            <p id='time'>Time: </p>
-            <p id='score'>Score: </p>
-            <p id='tile-num'>Tiles Left: </p>
-        </div>
-    </header>
-    
-    <main>
-        <div id='game-container'>
+        <header>
+            <h1>Scrabble Dabble</h1>
+            <div>
+                <p id='time'>Time: </p>
+                <p id='score'>Score: </p>
+                <p id='tile-num'>Tiles Left: </p>
+            </div>
+        </header>
 
-            <div id='tiles-form-container'>
-                <div id='tiles'>
-                    <div class='tile'>
-                        <p class='letter'>A</p>
-                        <p class='letter-value'>1</p>
+        <main>
+            <div id='game-container'>
+
+                <div id='tiles-form-container'>
+                    <div id='tiles'>
+                        <div class='tile'>
+                            <p class='letter'>A</p>
+                            <p class='letter-value'>1</p>
+                        </div>
+                        <div class='tile'>
+                            <p class='letter'>B</p>
+                            <p class='letter-value'>1</p>
+                        </div>
+                        <div class='tile'>
+                            <p class='letter'>C</p>
+                            <p class='letter-value'>1</p>
+                        </div>
+                        <div class='tile'>
+                            <p class='letter'>D</p>
+                            <p class='letter-value'>1</p>
+                        </div>
+                        <div class='tile'>
+                            <p class='letter'>E</p>
+                            <p class='letter-value'>1</p>
+                        </div>
+                        <div class='tile'>
+                            <p class='letter'>F</p>
+                            <p class='letter-value'>1</p>
+                        </div>
+                        <div class='tile'>
+                            <p class='letter'>G</p>
+                            <p class='letter-value'>1</p>
+                        </div>
                     </div>
-                    <div class='tile'>
-                        <p class='letter'>B</p>
-                        <p class='letter-value'>1</p>
-                    </div>    
-                    <div class='tile'>
-                        <p class='letter'>C</p>
-                        <p class='letter-value'>1</p>
-                    </div>    
-                    <div class='tile'>
-                        <p class='letter'>D</p>
-                        <p class='letter-value'>1</p>
-                    </div>    
-                    <div class='tile'>
-                        <p class='letter'>E</p>
-                        <p class='letter-value'>1</p>
-                    </div>    
-                    <div class='tile'>
-                        <p class='letter'>F</p>
-                        <p class='letter-value'>1</p>
-                    </div>    
-                    <div class='tile'>
-                        <p class='letter'>G</p>
-                        <p class='letter-value'>1</p>
-                    </div>
+
+                    <form class='pure-form'>
+                        <input type='text' id='input' class='pure-input-rounded' required>
+                        <div id='btns-container'>
+                            <button type='submit' id='submit' class='pure-button'>
+                                Submit<i class="fas fa-star fa-sm"></i>Word
+                            </button>
+                            <button type='submit' id='new-tile-btn' class='pure-button'>
+                                Dump<i class="fas fa-star fa-sm"></i>Tiles
+                            </button>
+                        </div>
+                        <div id='validity'>
+                        </div>
+                    </form>
+
                 </div>
 
-                <form class='pure-form'>
-                    <input type='text' id='input' class='pure-input-rounded'>
-                    <div id='btns-container'>
-                        <button type='submit' id='submit' class='pure-button'>
-                            Submit<i class="fas fa-star fa-sm"></i>Word
-                        </button>
-                        <button type='submit' id='new-tile-btn' class='pure-button'>
-                            Dump<i class="fas fa-star fa-sm"></i>Tiles
-                        </button>
+                <div id='word-bank'>
+                    <h3>Word Bank</h3>
+                    <table class='pure-table'>
+                        <thead>
+                            <tr>
+                                <th id='th-word'>Word</th>
+                                <th id='th-score'>Score</th>
+                                <th id='th-bonus'>Bonus</th>
+                            </tr>
+                        </thead>
+                        <tbody id='table-body'>
+                        </tbody>
+                    </table>
+                    <div id='gif-container'>
+                        <img id='returnImg'>
                     </div>
+
                     <div id='validity'></div>
                 </form>
             
@@ -89,10 +115,9 @@
                 <div id='gif-container'>
                     <img id='returnImg'>
                 </div>
-            </div>
-
         </div>
     </main>
+
 
     </div>
 
