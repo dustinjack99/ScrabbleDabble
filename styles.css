@@ -11,14 +11,14 @@ body {
     background-color: rgb(255, 255, 202);
     display: flex;
     flex-direction: column;
-    /* min-height: 100vh; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* --- Landing Page Styles --- */
 
 #landing-page {
     background-color: rgb(255, 255, 202);
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 #landing-page h3 {
     margin: 20px auto;
@@ -87,10 +87,6 @@ body {
 } 
 
 /* --- Highscores Styles --- */
-
-#highscores {
-    font-family: Arial, Helvetica, sans-serif;
-}
 
 #scoreboard {
     margin: 20px auto;
@@ -332,7 +328,8 @@ footer {
         width: 60%;
     }
     #submit,
-    #new-tile-btn {
+    #new-tile-btn,
+    #endBtn {
         margin-top: 10px;
         width: 150px;
     }
@@ -379,7 +376,8 @@ footer {
         width: 50%;
     }
     #submit,
-    #new-tile-btn {
+    #new-tile-btn,
+    #endBtn {
         font-size: 1.1em;
         width: 160px;
     }
@@ -392,6 +390,10 @@ footer {
     .game-over-msg {
         font-size: 1.2em;
     }
+    #scoreboard {
+        font-size: 1.1em;
+        width: 50%;
+    }
 }
 @media (min-width: 1024px) {
     header {
@@ -401,13 +403,14 @@ footer {
     h1 {
         font-size: 3.5em;
         padding-top: 30px;
+        padding-left: 40px;
         width: 72%;
     }
     header div {
         display: flex;
         flex-direction: column;
         font-size: 1.1em;
-        margin: 30px 0px 5px 0px;
+        margin: 25px 0px 5px 0px;
         width: 28%;
     }
     header div p {
@@ -460,7 +463,8 @@ footer {
         height: 50px;
     }
     #submit,
-    #new-tile-btn {
+    #new-tile-btn,
+    #endBtn {
         font-size: 1.2em;
         width: 180px;
     }
@@ -477,16 +481,25 @@ footer {
     }
     .game-over-msg {
         font-size: 1.4em;
+        margin-left: -30px;
+    }
+    #highscores h1 {
+        font-size: 2.6em;
+        padding-top: 20px;
+    }
+    #scoreboard {
+        font-size: 1.2em;
+        width: 40%;
     }
 }
 @media (min-width: 1200px) {
     #landing-page h3 {
         font-size: 1.9em;
-        width: 55%;
+        width: 50%;
     }
     #landing-page p {
         font-size: 1.6em;
-        width: 70%;
+        width: 65%;
     }
     .board-design {
         margin: 50px auto;
@@ -511,7 +524,8 @@ footer {
         margin-top: 10px;
     }
     #submit,
-    #new-tile-btn {
+    #new-tile-btn,
+    #endBtn {
         font-size: 1.4em;
         width: 200px;
     }
@@ -521,5 +535,12 @@ footer {
     }
     .game-over-msg {
         font-size: 1.6em;
+    }
+    #highscores h1 {
+        font-size: 2.8em;
+    }
+    #scoreboard {
+        font-size: 1.3em;
+        width: 35%;
     }
 }
