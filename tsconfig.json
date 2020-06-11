@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    // "allowJs": true,
     "noEmit": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "strict": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
     "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "noImplicitAny": true
   },
   "include": ["scores.ts", "script.ts"],
   "exclude": [
