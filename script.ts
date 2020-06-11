@@ -1,24 +1,24 @@
 // ********** DOM Elements **********
 
 const bank = document.querySelector('#word-bank');
-const time = document.querySelector('#time');
+const time = <HTMLInputElement>document.querySelector('#time');
 const tileDiv = document.querySelector('#tiles');
-const tileNum = document.querySelector('#tile-num');
-const input = document.querySelector<HTMLInputElement>('.pure-input-rounded');
-const submit = document.querySelector('#submit');
+const tileNum = <HTMLInputElement>document.querySelector('#tile-num');
+const input = <HTMLInputElement>document.querySelector('.pure-input-rounded');
+const submit = <HTMLInputElement>document.querySelector('#submit');
 const letterValue = document.querySelectorAll<HTMLInputElement>(
   '.letter-value'
 );
 const letterFace = document.querySelectorAll('.letter');
 const form = document.querySelector('.pure-form');
-const score = document.querySelector('#score');
-const image = document.querySelector('#returnImg');
+const score = <HTMLInputElement>document.querySelector('#score');
+const image = <HTMLInputElement>document.querySelector('#returnImg');
 const tileButton = document.querySelector('.letter');
-const tableBody = document.querySelector<HTMLTableElement>('#table-body');
-const table = document.querySelector('.pure-table');
-const gameBody = document.querySelector('#game-container');
-const newTilesBtn = document.querySelector('#new-tile-btn');
-const validContainer = document.querySelector('#validity');
+const tableBody = <HTMLTableElement>document.querySelector('#table-body');
+const table = document.querySelector<HTMLTableElement>('.pure-table');
+const gameBody = <HTMLInputElement>document.querySelector('#game-container');
+const newTilesBtn = <HTMLInputElement>document.querySelector('#new-tile-btn');
+const validContainer = <HTMLInputElement>document.querySelector('#validity');
 
 //  ********** Game Variables **********
 
@@ -125,12 +125,12 @@ function count() {
       name.setAttribute('id', 'inp');
       nameMsg.setAttribute('id', 'validity');
 
-      let endBtn = document.querySelector('#endBtn');
-      let inp: HTMLInputElement = document.querySelector('#inp');
+      let endBtn = <HTMLInputElement>document.querySelector('#endBtn');
+      let inp = <HTMLInputElement>document.querySelector('#inp');
 
       endBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        let highScores = JSON.parse(localStorage.getItem('highscores'));
+        let highScores = JSON.parse(<string>localStorage.getItem('highscores'));
         if (highScores == null) highScores = [];
 
         let userName;
@@ -222,9 +222,9 @@ function populateTiles() {
 function getTileValue() {
   for (let i = 0; i < letterFace.length; i++) {
     let letter = letterFace[i].textContent;
-    let score = scores[letter];
-    let val: string = letterValue[i].textContent;
-    let numVal = parseInt(val);
+    let score = scores[<string>letter];
+    let val = letterValue[i].textContent;
+    let numVal = parseInt(<string>val);
     numVal = score;
   }
 }

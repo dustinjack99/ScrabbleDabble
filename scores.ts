@@ -1,11 +1,11 @@
 // DOM Elements
-const scoreBoard = document.querySelector<HTMLOListElement>('#scoreboard');
+const scoreBoard = <HTMLOListElement>document.querySelector('#scoreboard');
 
 // Score Variables
 let scoreDiv;
 let li;
 let deleteBtn;
-let list = JSON.parse(localStorage.getItem('highscores'));
+let list = JSON.parse(<string>localStorage.getItem('highscores'));
 
 interface HighScores {
   [score: string]: number;
