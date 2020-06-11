@@ -1,0 +1,34 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "eslint.enable": true,
+    "eslint.validate": ["javascript", "typescript"],
+    "eslint.autoFixOnSave": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true
+    },
+    "search.exclude": {
+      "**/node_modules": true
+    },
+    "files.watcherExclude": {
+      "**/node_modules/**": true
+    },
+    "code-runner.executorMap": {
+      "javascript": "node",
+      "typescript": "node_modules/.bin/ts-node"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "aaron-bond.better-comments",
+      "dbaeumer.vscode-eslint",
+      "formulahendry.code-runner"
+    ]
+  }
+}
