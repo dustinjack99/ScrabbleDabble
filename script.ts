@@ -6,13 +6,15 @@ const tileDiv = document.querySelector('#tiles');
 const tileNum = document.querySelector('#tile-num');
 const input = document.querySelector<HTMLInputElement>('.pure-input-rounded');
 const submit = document.querySelector('#submit');
-const letterValue = document.querySelectorAll('.letter-value');
+const letterValue = document.querySelectorAll<HTMLInputElement>(
+  '.letter-value'
+);
 const letterFace = document.querySelectorAll('.letter');
 const form = document.querySelector('.pure-form');
 const score = document.querySelector('#score');
 const image = document.querySelector('#returnImg');
 const tileButton = document.querySelector('.letter');
-const tableBody = document.querySelector('#table-body');
+const tableBody = document.querySelector<HTMLTableElement>('#table-body');
 const table = document.querySelector('.pure-table');
 const gameBody = document.querySelector('#game-container');
 const newTilesBtn = document.querySelector('#new-tile-btn');
@@ -23,7 +25,12 @@ const validContainer = document.querySelector('#validity');
 let userScore: number = 0;
 let displayedLetters: string[] = [];
 let validWord: boolean = true;
-let scores: object = {
+
+interface Scores {
+  [score: string]: number;
+}
+
+let scores: Scores = {
   A: 1,
   B: 3,
   C: 3,
@@ -214,9 +221,11 @@ function populateTiles() {
 
 function getTileValue() {
   for (let i = 0; i < letterFace.length; i++) {
-    let letter = indexOf(letterFace[i].textContent);
-    let score = scores[indexOf(letter)];
-    letterValue[i].textContent = score;
+    let letter = letterFace[i].textContent;
+    let score = scores[letter];
+    let val: string = letterValue[i].textContent;
+    let numVal = parseInt(val);
+    numVal = score;
   }
 }
 
@@ -234,7 +243,7 @@ function checkIfWord() {
     })
     .then(function (json) {
       if (typeof json[0] === 'object') {
-        submittedWord = word.toUpperCase();
+        // let submittedWord = word.toUpperCase();
         printWords();
         input.value = '';
 
@@ -290,8 +299,8 @@ function printWords() {
   }
   //populate the table and update score
   wordCell.innerHTML = userWord;
-  scoreCell.innerHTML = scoreOfWord;
-  bonusCell.innerHTML = bonusOfWord;
+  scoreCell.innerHTML = scoreOfWord.toString();
+  bonusCell.innerHTML = bonusOfWord.toString();
   if (bonusOfWord === 1) {
     bonusCell.style.backgroundImage =
       'radial-gradient(rgb(181, 220, 231), rgb(137, 201, 221))';
