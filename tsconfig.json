@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "strictNullChecks": false,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": ["scores.ts", "script.ts"],
+  "exclude": [
+    "assests/images",
+    "index.html",
+    "landing.html",
+    "styles.css",
+    "scores.html"
+  ]
+}
