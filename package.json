@@ -4,7 +4,7 @@
   "description": "1st UW Full-Stack Coding Boot Camp group project",
   "main": "index.html",
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
