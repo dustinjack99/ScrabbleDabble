@@ -4,7 +4,7 @@
   "description": "1st UW Full-Stack Coding Boot Camp group project",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "url": "https://github.com/dustinjack99/ScrabbleDabble/issues"
   },
   "homepage": "https://github.com/dustinjack99/ScrabbleDabble#readme",
-  "dependencies": {
+  "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "@types/node": "^14.0.13",
@@ -26,7 +26,10 @@
     "dtslint": "^3.6.12",
     "eslint": "^7.2.0",
     "mocha": "^8.0.1",
+    "ts-loader": "^8.0.1",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12"
   }
 }
